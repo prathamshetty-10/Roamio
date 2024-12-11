@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose'
-
+import userRoutes from './Routes/userRoutes.js'
 import morgan from 'morgan'
 import cloudinary from 'cloudinary'
 
@@ -19,8 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 
 
-
-
+app.use('/api/auth',userRoutes);
 cloudinary.v2.config({
     cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
     api_key:process.env.CLOUDINARY_API_KEY,
