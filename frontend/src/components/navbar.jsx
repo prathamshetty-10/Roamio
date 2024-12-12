@@ -14,7 +14,7 @@ export default function Navbar(){
                 <div className="text-2xl font-bold px-6">Roamio</div>
                 <div className="space-x-9">
                     <button className="text-xl hover:text-blue-400 font-semibold" onClick={()=>{navigate("/home")}}>Home</button>
-                    <button className="text-xl hover:text-blue-400 font-semibold">Friends</button>
+                    <button className="text-xl hover:text-blue-400 font-semibold" onClick={()=>{navigate("/friends")}}>Friends</button>
                     <button className="text-xl hover:text-blue-400 font-semibold">Dashboard</button>
                     <button className="text-xl hover:text-blue-400 font-semibold" onClick={()=>{navigate("/profile")}}>Profile</button>
                     <button

@@ -5,7 +5,8 @@ import Register from './Pages/Register.jsx'
 import Login from './Pages/Login.jsx'
 import Home from './Pages/Home.jsx'
 import Profile from './pages/Profile.jsx'
-
+import Friends from './pages/Friends.jsx'
+import AddFriends from './pages/AddFriends.jsx'
 function App() {
   
 
@@ -16,7 +17,8 @@ function App() {
       <Route path="/" element={<Login/>}></Route>
       <Route path="/home" element={<Home/>}></Route>
       <Route path="/profile" element={<Profile/>}></Route>
-    
+      <Route path="/friends" element={<Friends/>}></Route>
+      <Route path="/addFriend" element={<AddFriends/>}></Route>
     </Routes>
       
     </>

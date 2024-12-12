@@ -2,4 +2,11 @@ const host="http://localhost:5001";
 const registerRoute=`${host}/api/auth/register`;
 const loginRoute=`${host}/api/auth/login`;
 const profileRoute=`${host}/api/auth/profile`;
-export {registerRoute,loginRoute,profileRoute}
+const getFriendsRoute=`${host}/api/friend/getFriends`;
+const removeFriendsRoute=`${host}/api/friend/removeFriends`;
+const searchFriendsRoute=`${host}/api/friend/searchFriends`;
+const getRequestsRoute=`${host}/api/friend/getRequests`;
+const sendRequestsRoute=`${host}/api/friend/sendRequests`;
+const acceptRequestsRoute=`${host}/api/friend/acceptRequests`;
+const rejectRequestsRoute=`${host}/api/friend/rejectRequests`;
+export {registerRoute,loginRoute,profileRoute,getFriendsRoute,searchFriendsRoute,getRequestsRoute,sendRequestsRoute,acceptRequestsRoute,rejectRequestsRoute,removeFriendsRoute}

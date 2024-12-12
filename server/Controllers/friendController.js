@@ -6,28 +6,47 @@ export const getFriends = async (req, res, next) => {
     try {
       const { username } = req.body;
       const friends = await Friend.find({ user1:username });
-      if (!friends)
+      if (friends.length==0)
         return res.json({ msg: "No friends", status: false });
-      
       return res.json({ status: true, data:friends });
     } catch (ex) {
         console.log(ex);
       next(ex);
     }
   };
-export const searchFriends=async(req,res,next)=>{
+  export const searchFriends = async (req, res, next) => {
     try {
-        const { data } = req.body;
-        const users = await User.find({ username:data});
-        if (!users)
-          return res.json({ msg: "No Such Users", status: false });
-        
-        return res.json({ status: true, data:users });
-      } catch (ex) {
-          console.log(ex);
-        next(ex);
+      const { data } = req.body;
+  
+      // Search for users where username starts with `data`
+      const users = await User.find({ 
+        username: { $regex: `^${data}`, $options: "i" } // Case-insensitive search
+      });
+  
+      if (!users || users.length === 0) {
+        return res.json({ msg: "No Such Users", status: false });
       }
-}
+  
+      return res.json({ status: true, data: users });
+    } catch (ex) {
+      console.log(ex);
+      next(ex);
+    }
+  };
+  
+export const removeFriend = async (req, res, next) => {
+    try {
+      const { username,me } = req.body;
+      await Friend.deleteOne({user1:username});
+      await Friend.deleteOne({user1:me});
+      
+      
+      return res.json({ status: true, msg:"deleted friend"});
+    } catch (ex) {
+        console.log(ex);
+      next(ex);
+    }
+  };
 export const getRequests=async(req,res,next)=>{
     try {
         const { uname } = req.body;
