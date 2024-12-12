@@ -19,7 +19,7 @@ export const login = async (req, res, next) => {
       next(ex);
     }
   };
-  export const register = async (req, res, next) => {
+export const register = async (req, res, next) => {
     try {
       const { username, email, password } = req.body;
       const usernameCheck = await User.findOne({ username });
@@ -66,6 +66,7 @@ export const login = async (req, res, next) => {
         email,
         username,
         password: password,
+        badge:"ROOKIE",
         avatar:{
             public_id:publicId,
             secure_url:secure_url,
@@ -78,3 +79,4 @@ export const login = async (req, res, next) => {
       next(ex);
     }
   };
+

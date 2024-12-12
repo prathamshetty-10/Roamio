@@ -1,7 +1,6 @@
 import {
     login,
     register,
-    
   } from "../Controllers/userController.js";
   import express from 'express'
   import { upload } from "../middleware/multer.middleware.js";
@@ -9,8 +8,6 @@ import {
   const router = express.Router();
   
   router.post("/login", login);
-  router.post("/register",upload.single('avatar'), register);
-
-  
+  router.post("/register",upload.single('avatar'), register);  
 
   export default router;

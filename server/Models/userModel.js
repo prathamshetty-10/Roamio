@@ -18,6 +18,9 @@ const userSchema = new mongoose.Schema({
     required: true,
     min: 5,
   },
+  badge:{
+    type:String,
+  },
   avatar:{
         public_id:{
             type:String
