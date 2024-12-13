@@ -2,20 +2,36 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar.jsx";
 import axios from "axios";
-import { getFriendsRoute,removeFriendsRoute } from "../utils/APIRoutes.js";
+import { getFriendsRoute, removeFriendsRoute } from "../utils/APIRoutes.js";
 import toast from "react-hot-toast";
 
 export default function Friends() {
   const navigate = useNavigate();
   const [Me, SetMe] = useState({});
   const [users, setUsers] = useState([]);
-  const [apiCalled, setApiCalled] = useState(false); // Add a flag to track the API call
-  const removeFriendFunc=async(uname)=>{
-    await  axios.post(`${removeFriendsRoute}`,{
-        username:uname,
-        me:Me.username
-    })
-  }
+  const [apiCalled, setApiCalled] = useState(false);
+
+  // Function to remove a friend
+  const removeFriendFunc = async (u) => {
+    try {
+      const response = await axios.post(`${removeFriendsRoute}`, {
+        other: u,
+        me: Me,
+      });
+
+      if (response.data.status) {
+        // Remove the friend from the local state immediately
+        setUsers((prevUsers) => prevUsers.filter((user) => user.user2.username !== u.username));
+        toast.success("Friend removed successfully.");
+      } else {
+        toast.error("Failed to remove friend.");
+      }
+    } catch (error) {
+      console.error("Error removing friend:", error);
+      toast.error("Failed to remove friend. Please try again.");
+    }
+  };
+
   const getFriendsFunc = async () => {
     if (!Me.username) return;
 
@@ -66,16 +82,19 @@ export default function Friends() {
       <div className="flex flex-col items-center justify-start text-center text-white relative z-10 mt-[100px] px-4 w-full overflow-y-auto h-[calc(100vh-150px)]">
         
         {/* Heading and Add Friends Button in Same Row */}
-        <div className="flex items-center justify-center gap-[250px] w-full mb-6">
-          <h1 className="text-7xl font-extrabold text-red-900">Friends</h1>
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-full font-bold text-xl hover:bg-blue-700 mt-6" onClick={()=>navigate("/addFriend")}>
+        <div className="flex items-center justify-center gap-[50px] w-full mb-6">
+          <button className="bg-blue-600 text-white px-6 py-3 rounded-full font-bold text-xl hover:bg-blue-700 mt-6" onClick={() => navigate("/addFriend", { state: users })}>
             Add Friends
+          </button>
+          <h1 className="text-7xl font-extrabold text-red-900">Friends</h1>
+          <button className="bg-blue-600 text-white px-6 py-3 rounded-full font-bold text-xl hover:bg-blue-700 mt-6" onClick={() => navigate("/requests")}>
+            Requests
           </button>
         </div>
 
         {/* Render users only when the array is not empty */}
         {users.length > 0 ? (
-          <div className="flex flex-col gap-4 mt-6 w-[700px] rounded-3xl ">
+          <div className="flex flex-col gap-4 mt-6 w-[700px] rounded-3xl">
             {users.map((user, index) => (
               <div
                 key={index}
@@ -83,20 +102,20 @@ export default function Friends() {
               >
                 {/* Profile Photo */}
                 <img
-                  src={user.public_url}
-                  alt={user.username}
+                  src={user.user2.avatar.secure_url}
+                  alt={user.user2.username}
                   className="w-20 h-20 rounded-full border-2 border-[#6f1420] mx-4"
                 />
                 {/* User Details */}
                 <div className="flex flex-col text-center flex-grow">
-                  <span className="text-xl font-bold text-[#651225]">{user.username}</span>
-                  <span className="text-xl text-[#555555] font-bold">{user.email}</span>
+                  <span className="text-xl font-bold text-[#651225]">{user.user2.username}</span>
+                  <span className="text-xl text-[#555555] font-bold">{user.user2.email}</span>
                 </div>
                 {/* Badge */}
-                <span className="bg-[#ff7e5f] text-white px-4 py-2 rounded-full font-bold text-lg">{user.badge}</span>
+                <span className="bg-[#ff7e5f] text-white px-4 py-2 rounded-full font-bold text-lg">{user.user2.badge}</span>
 
                 {/* Remove Button */}
-                <button className="bg-red-600 text-white px-4 py-2 rounded-full font-bold text-lg ml-4 hover:bg-red-700" onClick={()=>removeFriendFunc(user.username)}>
+                <button className="bg-red-600 text-white px-4 py-2 rounded-full font-bold text-lg ml-4 hover:bg-red-700" onClick={() => removeFriendFunc(user.user2)}>
                   Remove
                 </button>
               </div>

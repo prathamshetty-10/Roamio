@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar.jsx";
 import axios from "axios";
 import { searchFriendsRoute, sendRequestsRoute } from "../utils/APIRoutes.js";
@@ -7,6 +7,8 @@ import toast from "react-hot-toast";
 import debounce from "lodash.debounce";
 
 export default function AddFriends() {
+  const location = useLocation();
+  const users = location.state; // Array of current friends
   const navigate = useNavigate();
   const [Me, SetMe] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
@@ -25,6 +27,11 @@ export default function AddFriends() {
   const fetchSearchResults = async (query) => {
     if (!query.trim()) {
       setSearchResults([]);
+      return;
+    }
+
+    if (query === Me.username) {
+      setSearchResults([]); // Show no results if user searches for their own name
       return;
     }
 
@@ -52,11 +59,17 @@ export default function AddFriends() {
     debouncedFetchSearchResults(value);
   };
 
+  useEffect(() => {
+    return () => {
+      debouncedFetchSearchResults.cancel(); // Clean up debounce
+    };
+  }, []);
+
   const sendFriendRequest = async (user) => {
     try {
       const { data } = await axios.post(`${sendRequestsRoute}`, {
-        from:user,
-        to:Me.username
+        to: user.username,
+        from: Me,
       });
 
       if (data.status === true) {
@@ -88,37 +101,47 @@ export default function AddFriends() {
         {isLoading && <div className="text-white">Loading...</div>}
         {searchResults.length > 0 ? (
           <div className="flex flex-col gap-4 mt-6 w-full max-w-[700px] rounded-3xl">
-            {searchResults.map((user, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between p-4 rounded-xl shadow-md bg-yellow-50"
-              >
-                <div className="flex items-center gap-4">
-                  <img
-                    src={user.secure_url}
-                    alt={user.username}
-                    className="w-12 h-12 rounded-full border-2 border-[#6f1420]"
-                  />
-                  <div className="flex flex-col text-left">
-                    <span className="text-xl font-bold text-[#651225]">
-                      {user.username}
-                    </span>
-                    <span className="text-lg text-[#555555]">{user.email}</span>
-                    {user.badge && (
-                      <span className="text-sm text-[#ff5722] font-semibold">
-                        {user.badge}
-                      </span>
+            {searchResults
+              .filter(user => user.username !== Me.username) // Exclude the logged-in user
+              .map((user, index) => {
+                const isAlreadyFriend = users.some(friend => friend.username === user.username);
+
+                return (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between p-4 rounded-xl shadow-md bg-yellow-50"
+                  >
+                    <div className="flex items-center gap-4">
+                      <img
+                        src={user.avatar.secure_url}
+                        alt={user.username}
+                        className="w-12 h-12 rounded-full border-2 border-[#6f1420]"
+                      />
+                      <div className="flex flex-col text-left">
+                        <span className="text-xl font-bold text-[#651225]">
+                          {user.username}
+                        </span>
+                        <span className="text-lg text-[#555555]">{user.email}</span>
+                        {user.badge && (
+                          <span className="text-sm text-[#ff5722] font-semibold">
+                            {user.badge}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    {isAlreadyFriend ? (
+                      <div className="text-sm font-bold text-green-700">Already Friends</div>
+                    ) : (
+                      <button
+                        onClick={() => sendFriendRequest(user)}
+                        className="bg-green-600 text-white px-4 py-2 rounded-full font-bold text-lg hover:bg-green-700"
+                      >
+                        Add Friend
+                      </button>
                     )}
                   </div>
-                </div>
-                <button
-                  onClick={() => sendFriendRequest(user)}
-                  className="bg-green-600 text-white px-4 py-2 rounded-full font-bold text-lg hover:bg-green-700"
-                >
-                  Add Friend
-                </button>
-              </div>
-            ))}
+                );
+              })}
           </div>
         ) : (
           !isLoading && (
