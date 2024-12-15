@@ -10,5 +10,7 @@ const sendRequestsRoute=`${host}/api/friend/sendRequests`;
 const acceptRequestsRoute=`${host}/api/friend/acceptRequests`;
 const rejectRequestsRoute=`${host}/api/friend/rejectRequests`;
 const getTripsRoute=`${host}/api/trip/getTrips`;
+const addTripsRoute=`${host}/api/trip/addTrips`;
+const removeTripsRoute=`${host}/api/trip/removeTrips`;
 export {registerRoute,loginRoute,profileRoute,getFriendsRoute,searchFriendsRoute,getRequestsRoute,sendRequestsRoute,acceptRequestsRoute,
-    rejectRequestsRoute,removeFriendsRoute,getTripsRoute}
+    rejectRequestsRoute,removeFriendsRoute,getTripsRoute,addTripsRoute,removeTripsRoute}

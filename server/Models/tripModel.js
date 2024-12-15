@@ -4,6 +4,9 @@ const tripSchema = new mongoose.Schema({
   tripName: {
     type: String,
   },
+  location:{
+    type:String
+  },
   avatar:{
         public_id:{
             type:String

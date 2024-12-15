@@ -9,9 +9,7 @@ const userSchema = new mongoose.Schema({
   },
   trips: [
   {
-    tripName: {
-      type: String,
-    },
+    type:String
   },
   ],
 

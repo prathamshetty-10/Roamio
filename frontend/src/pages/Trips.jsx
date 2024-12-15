@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar.jsx";
 import axios from "axios";
-import { getTripsRoute } from "../utils/APIRoutes.js";
+import { getTripsRoute ,removeTripsRoute} from "../utils/APIRoutes.js";
 import toast from "react-hot-toast";
 
 export default function Trips() {
@@ -22,7 +22,7 @@ export default function Trips() {
 
       if (response.data.status === false || !response.data.data.length) {
         toast.success("No trips available");
-        setTrips([]); // Set empty array when no trips are available
+        setTrips([]);
       } else {
         // Sort trips by the closest start date
         const sortedTrips = response.data.data.sort((a, b) => {
@@ -34,6 +34,27 @@ export default function Trips() {
     } catch (error) {
       console.error("Error fetching trips:", error);
       toast.error("Failed to load trips. Please try again.");
+    }
+  };
+
+  // Function to delete a trip
+  const deleteTrip = async (tripName) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this trip?");
+    if (!confirmDelete) return;
+
+    try {
+      const response = await axios.post(`${removeTripsRoute}`, {
+        tripName:tripName
+      }); 
+      if (response.data.status) {
+        toast.success("Trip deleted successfully");
+        setTrips((prevTrips) => prevTrips.filter((trip) => trip.tripName !== tripName));
+      } else {
+        toast.error(response.data.msg || "Failed to delete trip");
+      }
+    } catch (error) {
+      console.error("Error deleting trip:", error);
+      toast.error("Failed to delete trip. Please try again.");
     }
   };
 
@@ -75,8 +96,16 @@ export default function Trips() {
       {/* Main Body (scrollable part only) */}
       <div className="flex flex-col items-center justify-start text-center text-white relative z-10 mt-[100px] px-4 w-full overflow-y-auto h-[calc(100vh-150px)]">
         
-        {/* Heading */}
-        <h1 className="text-7xl font-extrabold text-red-900 mb-6">Trips</h1>
+        {/* Heading and Add Trips Button */}
+        <div className="flex items-center justify-center w-full max-w-[800px] gap-[200px]">
+          <h1 className="text-7xl font-extrabold text-red-900 mb-6">Trips</h1>
+          <button
+            className="bg-blue-600 text-white px-6 py-2 rounded-full font-bold text-lg hover:bg-blue-700"
+            onClick={() => navigate("/addTrips")}
+          >
+            Add Trips
+          </button>
+        </div>
 
         {/* Render trips only when the array is not empty */}
         {trips.length > 0 ? (
@@ -85,14 +114,14 @@ export default function Trips() {
               <div
                 key={index}
                 className="flex p-4 rounded-xl shadow-md mb-4 bg-yellow-50"
-                style={{ height: "250px" }}
+                style={{ height: "290px" }}
               >
                 {/* Left-hand side: Avatar */}
                 <div className="w-1/3 h-full flex items-center justify-center bg-[#f0f0f0] rounded-l-xl">
                   <img
                     src={trip.avatar.secure_url}
                     alt={trip.tripName}
-                    className="w-[150px] h-[150px] rounded-lg object-cover"
+                    className="w-full h-full rounded-lg object-cover"
                   />
                 </div>
 
@@ -106,9 +135,20 @@ export default function Trips() {
                     {/* Countdown */}
                     <p className="text-lg text-green-600 font-semibold mt-2">{getCountdown(trip.dateRange.from)}</p>
                   </div>
+
+                  {/* Delete Trip Button for Admin */}
+                  {trip.admin.username === Me.username && (
+                    <button
+                      className="bg-red-600 text-white px-4 py-2 rounded-full font-bold text-lg hover:bg-red-700"
+                      onClick={() => deleteTrip(trip.tripName)}
+                    >
+                      Delete Trip
+                    </button>
+                  )}
+
                   <button
                     className="bg-blue-600 text-white px-4 py-2 mt-5 rounded-full font-bold text-lg hover:bg-blue-700"
-                    onClick={() => navigate(`/trip/${trip._id}`)}
+                    onClick={() => navigate("/exploreTrips",{state:trip})}
                   >
                     Explore
                   </button>
@@ -125,5 +165,6 @@ export default function Trips() {
     </div>
   );
 }
+
 
 
