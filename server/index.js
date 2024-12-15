@@ -3,6 +3,7 @@ import cors from 'cors'
 import mongoose from 'mongoose'
 import userRoutes from './Routes/userRoutes.js'
 import friendRoutes from './Routes/friendRoutes.js'
+import tripRoutes from './Routes/tripRoutes.js'
 import morgan from 'morgan'
 import cloudinary from 'cloudinary'
 
@@ -22,6 +23,7 @@ app.use(express.urlencoded({extended:true}))
 
 app.use('/api/auth',userRoutes);
 app.use('/api/friend',friendRoutes);
+app.use('/api/trip',tripRoutes)
 cloudinary.v2.config({
     cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
     api_key:process.env.CLOUDINARY_API_KEY,

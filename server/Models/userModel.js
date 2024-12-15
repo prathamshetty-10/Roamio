@@ -7,6 +7,14 @@ const userSchema = new mongoose.Schema({
     
     unique: true,
   },
+  trips: [
+  {
+    tripName: {
+      type: String,
+    },
+  },
+  ],
+
   email: {
     type: String,
     required: true,

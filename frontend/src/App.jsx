@@ -8,6 +8,7 @@ import Profile from './pages/Profile.jsx'
 import Friends from './pages/Friends.jsx'
 import AddFriends from './pages/AddFriends.jsx'
 import Requests from './pages/Requests.jsx'
+import Trips from './pages/Trips.jsx'
 function App() {
   
 
@@ -21,6 +22,7 @@ function App() {
       <Route path="/friends" element={<Friends/>}></Route>
       <Route path="/addFriend" element={<AddFriends/>}></Route>
       <Route path="/requests" element={<Requests/>}></Route>
+      <Route path="/trips" element={<Trips/>}></Route>
     </Routes>
       
     </>
