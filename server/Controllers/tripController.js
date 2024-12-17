@@ -153,8 +153,6 @@ export const editTrips = async (req, res, next) => {
       oldtripName,
       newtripName,
       dateRange,
-      Removedmembers,
-      members,
       description,
       budget,
       location
@@ -175,19 +173,9 @@ export const editTrips = async (req, res, next) => {
     if (!trip) {
       return res.json({ msg: "Old trip not found", status: false });
     }
-    const nmembers=JSON.parse(members);
+    
     const updatedTripData = {};
-    let updatedMembers = [...nmembers]; 
 
-    if (Removedmembers && Removedmembers.length > 0) {
-      const parsedRemovedMembers = JSON.parse(Removedmembers);
-      for (const removedMember of parsedRemovedMembers) {
-        await User.updateOne(
-          { username: removedMember.username },
-          { $pull: { trips: oldtripName } }
-        );
-      }
-    }
 
     const parsedDateRange = JSON.parse(dateRange);
     updatedTripData.dateRange = {
@@ -198,7 +186,6 @@ export const editTrips = async (req, res, next) => {
     updatedTripData.description = description || "";
     updatedTripData.budget = budget || 0;
     updatedTripData.location = location;
-    updatedTripData.members = updatedMembers;
 
    
     updatedTripData.tripName = newtripName;
@@ -206,7 +193,7 @@ export const editTrips = async (req, res, next) => {
 
     // If the trip name was changed, update each user's trip name
     if (newtripName !== oldtripName) {
-      for (const member of updatedMembers) {
+      for (const member of trip.members) {
         await User.updateOne(
           { username: member.username },
           { 
@@ -224,8 +211,6 @@ export const editTrips = async (req, res, next) => {
     next(ex);
   }
 };
-
-
 export const leaveTrips = async (req, res, next) => {
   try {
     const { tripName, username } = req.body;
@@ -248,6 +233,48 @@ export const leaveTrips = async (req, res, next) => {
     
 
     return res.json({ msg: "Successfully left the trip", status: true });
+  } catch (ex) {
+    console.error(ex);
+    next(ex);
+  }
+};
+export const editmembers = async (req, res, next) => {
+  try {
+    const {
+      tripName,
+      Removedmembers,
+      members,
+      
+    } = req.body;
+
+    
+
+    const trip = await Trip.findOne({ tripName:tripName });
+    if (!trip) {
+      return res.json({ msg: "Old trip not found", status: false });
+    }
+    const nmembers=JSON.parse(members);
+    let updatedMembers = [...nmembers]; 
+
+    if (Removedmembers && Removedmembers.length > 0) {
+      const parsedRemovedMembers = JSON.parse(Removedmembers);
+      for (const removedMember of parsedRemovedMembers) {
+        await User.updateOne(
+          { username: removedMember.username },
+          { $pull: { trips: tripName } }
+        );
+      }
+    }
+    await Trip.updateOne(
+      { tripName: tripName }, 
+      { $set: { members: updatedMembers } }
+    );
+    
+
+    
+    const updatedTrip = await Trip.findOne({ tripName: tripName});
+    return res.json({ status: true, data: updatedTrip });
+
   } catch (ex) {
     console.error(ex);
     next(ex);

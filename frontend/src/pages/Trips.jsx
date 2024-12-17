@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { CiCalendarDate } from "react-icons/ci";
+import { CiLocationOn } from "react-icons/ci";
 import Navbar from "../components/navbar.jsx";
 import axios from "axios";
 import { getTripsRoute ,removeTripsRoute} from "../utils/APIRoutes.js";
@@ -114,7 +116,7 @@ export default function Trips() {
               <div
                 key={index}
                 className="flex p-4 rounded-xl shadow-md mb-4 bg-yellow-50"
-                style={{ height: "290px" }}
+                style={{ height: "320px" }}
               >
                 {/* Left-hand side: Avatar */}
                 <div className="w-1/3 h-full flex items-center justify-center bg-[#f0f0f0] rounded-l-xl">
@@ -129,9 +131,20 @@ export default function Trips() {
                 <div className="flex flex-col justify-between flex-grow p-4 gap-3">
                   <div>
                     <span className="text-3xl font-bold text-[#651225]">{trip.tripName}</span>
+                    <p className="flex items-center justify-center">
+                    <CiCalendarDate className="text-2xl text-black mt-3 mr-4"/>
                     <p className="text-xl text-gray-600 mt-2 font-semibold">
-                      {`From: ${new Date(trip.dateRange.from).toLocaleDateString()} To: ${new Date(trip.dateRange.to).toLocaleDateString()}`}
+                      {` ${new Date(trip.dateRange.from).toLocaleDateString()} To: ${new Date(trip.dateRange.to).toLocaleDateString()}`}
                     </p>
+                    </p>
+                    <p className="flex items-center justify-center">
+                    <CiLocationOn className="text-2xl text-black mt-3 mr-4"/>
+                    <p className="text-xl text-gray-600 mt-2 font-semibold">
+                      {trip.location}
+                    </p>
+                    </p>
+                    
+                    
                     {/* Countdown */}
                     <p className="text-lg text-green-600 font-semibold mt-2">{getCountdown(trip.dateRange.from)}</p>
                   </div>
@@ -145,7 +158,7 @@ export default function Trips() {
                       Delete Trip
                     </button>
                   )}
-
+                  
                   <button
                     className="bg-blue-600 text-white px-4 py-2 mt-5 rounded-full font-bold text-lg hover:bg-blue-700"
                     onClick={() => navigate("/exploreTrips",{state:trip})}
