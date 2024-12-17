@@ -110,7 +110,7 @@ export default function ExploreTrips() {
               {tripData.admin.username === Me.username && (
                 <button
                   className="bg-red-600 text-white px-4 py-1 mt-0 ml-6 rounded-full font-bold text-md hover:bg-red-700"
-                  onClick={() => navigate("/editTrip", { state: tripData })}
+                  onClick={() => navigate("/editMembers", { state: tripData })}
                 >
                   Add/Remove Members
                 </button>

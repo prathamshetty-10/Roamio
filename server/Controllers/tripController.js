@@ -263,7 +263,7 @@ export const editmembers = async (req, res, next) => {
     }
     const nmembers=JSON.parse(members);
     let updatedMembers = [...nmembers]; 
-
+    //the newly added members ke users meh change is not happening
     if (Removedmembers && Removedmembers.length > 0) {
       const parsedRemovedMembers = JSON.parse(Removedmembers);
       for (const removedMember of parsedRemovedMembers) {

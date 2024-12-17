@@ -73,6 +73,7 @@ export default function EditTrip() {
         navigate("/trips");
       }
     } catch (error) {
+        console.log(error)
       toast.error("Failed to update trip. Please try again.");
     } finally {
       setIsSubmitting(false);

@@ -12,6 +12,7 @@ import Trips from './pages/Trips.jsx'
 import AddTrip from './pages/AddTrips.jsx'
 import ExploreTrips from './pages/ExploreTrips.jsx'
 import EditTrip from './pages/EditTrip.jsx'
+import EditMembers from './pages/EditMembers.jsx'
 function App() {
   
 
@@ -29,6 +30,7 @@ function App() {
       <Route path="/addTrips" element={<AddTrip/>}></Route>
       <Route path="/exploreTrips" element={<ExploreTrips/>}></Route>
       <Route path="/editTrip" element={<EditTrip/>}></Route>
+      <Route path="/editMembers" element={<EditMembers/>}></Route>
     </Routes>
       
     </>

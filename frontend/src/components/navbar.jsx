@@ -15,7 +15,7 @@ export default function Navbar(){
                 <div className="space-x-9">
                     <button className="text-xl hover:text-blue-400 font-semibold" onClick={()=>{navigate("/home")}}>Home</button>
                     <button className="text-xl hover:text-blue-400 font-semibold" onClick={()=>{navigate("/friends")}}>Friends</button>
-                    <button className="text-xl hover:text-blue-400 font-semibold" onClick={()=>{navigate("/trips")}}>Dashboard</button>
+                    <button className="text-xl hover:text-blue-400 font-semibold" onClick={()=>{navigate("/trips")}}>Trips</button>
                     <button className="text-xl hover:text-blue-400 font-semibold" onClick={()=>{navigate("/profile")}}>Profile</button>
                     <button
                         onClick={handleClick1}
