@@ -173,37 +173,45 @@ export const editTrips = async (req, res, next) => {
     if (!trip) {
       return res.json({ msg: "Old trip not found", status: false });
     }
-    
+
     const updatedTripData = {};
-
-
     const parsedDateRange = JSON.parse(dateRange);
+
     updatedTripData.dateRange = {
       from: parsedDateRange.from,
       to: parsedDateRange.to,
     };
-
     updatedTripData.description = description || "";
     updatedTripData.budget = budget || 0;
     updatedTripData.location = location;
-
-   
     updatedTripData.tripName = newtripName;
-    await Trip.updateOne({ tripName: oldtripName }, { $set: updatedTripData });
+
+    // Update the Trip document
+    const updatedTrip = await Trip.findOneAndUpdate(
+      { tripName: oldtripName },
+      { $set: updatedTripData },
+      { new: true } // Return the updated trip
+    );
 
     // If the trip name was changed, update each user's trip name
     if (newtripName !== oldtripName) {
-      for (const member of trip.members) {
-        await User.updateOne(
-          { username: member.username },
-          { 
-            $pull: { trips: oldtripName },  // Remove the old trip name
-            $push: { trips: newtripName }   // Add the new trip name
-          }
-        );
-      }
+      await User.updateMany(
+        { username: { $in: trip.members.map(member => member.username) } }, // Update all users in the trip
+        { 
+          $pull: { trips: oldtripName },  // Remove the old trip name
+           // Add the new trip name
+        }
+      );
+      await User.updateMany(
+        { username: { $in: trip.members.map(member => member.username) } }, // Update all users in the trip
+        { 
+          // Remove the old trip name
+          $push: { trips: newtripName }   // Add the new trip name
+        }
+      );
+      
     }
-    const updatedTrip = await Trip.findOne({ tripName: newtripName});
+
     return res.json({ status: true, data: updatedTrip });
 
   } catch (ex) {
