@@ -147,3 +147,109 @@ export const removeTrips = async (req, res, next) => {
     next(ex);
   }
 };
+export const editTrips = async (req, res, next) => {
+  try {
+    const {
+      oldtripName,
+      newtripName,
+      dateRange,
+      Removedmembers,
+      members,
+      description,
+      budget,
+      location
+    } = req.body;
+
+    if (!oldtripName || !newtripName || !dateRange || !location) {
+      return res.json({ msg: "Missing required fields", status: false });
+    }
+
+    if (newtripName !== oldtripName) {
+      const existingTrip = await Trip.findOne({ tripName: newtripName });
+      if (existingTrip) {
+        return res.json({ msg: "Trip with this new name already exists", status: false });
+      }
+    }
+
+    const trip = await Trip.findOne({ tripName: oldtripName });
+    if (!trip) {
+      return res.json({ msg: "Old trip not found", status: false });
+    }
+    const nmembers=JSON.parse(members);
+    const updatedTripData = {};
+    let updatedMembers = [...nmembers]; 
+
+    if (Removedmembers && Removedmembers.length > 0) {
+      const parsedRemovedMembers = JSON.parse(Removedmembers);
+      for (const removedMember of parsedRemovedMembers) {
+        await User.updateOne(
+          { username: removedMember.username },
+          { $pull: { trips: oldtripName } }
+        );
+      }
+    }
+
+    const parsedDateRange = JSON.parse(dateRange);
+    updatedTripData.dateRange = {
+      from: parsedDateRange.from,
+      to: parsedDateRange.to,
+    };
+
+    updatedTripData.description = description || "";
+    updatedTripData.budget = budget || 0;
+    updatedTripData.location = location;
+    updatedTripData.members = updatedMembers;
+
+   
+    updatedTripData.tripName = newtripName;
+    await Trip.updateOne({ tripName: oldtripName }, { $set: updatedTripData });
+
+    // If the trip name was changed, update each user's trip name
+    if (newtripName !== oldtripName) {
+      for (const member of updatedMembers) {
+        await User.updateOne(
+          { username: member.username },
+          { 
+            $pull: { trips: oldtripName },  // Remove the old trip name
+            $push: { trips: newtripName }   // Add the new trip name
+          }
+        );
+      }
+    }
+    const updatedTrip = await Trip.findOne({ tripName: newtripName});
+    return res.json({ status: true, data: updatedTrip });
+
+  } catch (ex) {
+    console.error(ex);
+    next(ex);
+  }
+};
+
+
+export const leaveTrips = async (req, res, next) => {
+  try {
+    const { tripName, username } = req.body;
+
+    if (!tripName || !username) {
+      return res.json({ msg: "Trip name and username are required", status: false });
+    }
+    const trip = await Trip.findOne({ tripName });
+    if (!trip) {
+      return res.json({ msg: "Trip not found", status: false });
+    }
+    await User.updateOne(
+      { username },
+      { $pull: { trips: tripName } }
+    );
+    await Trip.updateOne(
+      { tripName },
+      { $pull: { members: { username } } }
+    );
+    
+
+    return res.json({ msg: "Successfully left the trip", status: true });
+  } catch (ex) {
+    console.error(ex);
+    next(ex);
+  }
+};

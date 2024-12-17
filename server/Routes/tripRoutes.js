@@ -2,7 +2,9 @@
 import {
     getTrips,
     addTrips,
-    removeTrips
+    removeTrips,
+    editTrips,
+    leaveTrips
   } from "../Controllers/tripController.js";
   import {upload} from '../middleware/multer.middleware.js'
   import express from 'express'
@@ -12,4 +14,6 @@ import {
   router.post("/getTrips", getTrips);
   router.post("/addTrips",upload.single('avatar'), addTrips);  
   router.post("/removeTrips", removeTrips);
+  router.post("/editTrips", editTrips);
+  router.post("/leaveTrips", leaveTrips);
   export default router;

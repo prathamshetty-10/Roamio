@@ -10,6 +10,7 @@ import AddFriends from './pages/AddFriends.jsx'
 import Requests from './pages/Requests.jsx'
 import Trips from './pages/Trips.jsx'
 import AddTrip from './pages/AddTrips.jsx'
+import ExploreTrips from './pages/ExploreTrips.jsx'
 function App() {
   
 
@@ -25,6 +26,7 @@ function App() {
       <Route path="/requests" element={<Requests/>}></Route>
       <Route path="/trips" element={<Trips/>}></Route>
       <Route path="/addTrips" element={<AddTrip/>}></Route>
+      <Route path="/exploreTrips" element={<ExploreTrips/>}></Route>
     </Routes>
       
     </>
