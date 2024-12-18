@@ -70,7 +70,7 @@ export default function EditTrip() {
         toast.error(data.msg);
       } else {
         toast.success("Trip updated successfully");
-        navigate("/trips");
+        navigate("/exploreTrips",{state:data.data});
       }
     } catch (error) {
         console.log(error)
@@ -94,7 +94,7 @@ export default function EditTrip() {
         <div className="flex items-center w-full max-w-[800px] justify-start gap-4">
           <button
             className="bg-blue-600 text-white px-4 py-2 rounded-full flex items-center gap-2 font-bold text-lg hover:bg-blue-700"
-            onClick={() => navigate("/exploreTrips")}
+            onClick={() => navigate("/exploreTrips",{state:tripDataFromState})}
           >
             <IoArrowBackSharp size={20} /> Back
           </button>

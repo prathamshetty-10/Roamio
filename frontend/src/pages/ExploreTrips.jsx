@@ -120,7 +120,7 @@ export default function ExploreTrips() {
                 {tripData.members.map((member, index) => (
                   <div
                     key={index}
-                    className="text-lg text-gray-700 flex items-center gap-2 bg-gray-100 p-2 rounded shadow w-1/4"
+                    className="text-lg text-gray-700 flex items-center gap-2 bg-gray-100 p-2 rounded-3xl shadow w-1/4 border-2 border-black"
                   >
                     <FaUsers className="text-blue-600" /> {member.username}
                   </div>

@@ -252,18 +252,17 @@ export const editmembers = async (req, res, next) => {
       tripName,
       Removedmembers,
       members,
-      
     } = req.body;
 
-    
-
-    const trip = await Trip.findOne({ tripName:tripName });
+    const trip = await Trip.findOne({ tripName });
     if (!trip) {
       return res.json({ msg: "Old trip not found", status: false });
     }
-    const nmembers=JSON.parse(members);
-    let updatedMembers = [...nmembers]; 
-    //the newly added members ke users meh change is not happening
+
+    const nmembers = JSON.parse(members);
+    let updatedMembers = [...nmembers];
+
+    // Remove tripName from removed users' trips array
     if (Removedmembers && Removedmembers.length > 0) {
       const parsedRemovedMembers = JSON.parse(Removedmembers);
       for (const removedMember of parsedRemovedMembers) {
@@ -273,14 +272,22 @@ export const editmembers = async (req, res, next) => {
         );
       }
     }
+
+    // Update members in the Trip document
     await Trip.updateOne(
-      { tripName: tripName }, 
+      { tripName },
       { $set: { members: updatedMembers } }
     );
-    
 
-    
-    const updatedTrip = await Trip.findOne({ tripName: tripName});
+    // Add tripName to updatedMembers' trips array
+    for (const member of updatedMembers) {
+      await User.updateOne(
+        { username: member.username },
+        { $addToSet: { trips: tripName } } // Ensures no duplicate entries
+      );
+    }
+
+    const updatedTrip = await Trip.findOne({ tripName });
     return res.json({ status: true, data: updatedTrip });
 
   } catch (ex) {

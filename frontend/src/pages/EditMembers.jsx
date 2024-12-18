@@ -11,7 +11,7 @@ export default function EditMembers() {
   const navigate = useNavigate();
   const [Me, SetMe] = useState({});
   const [friends, setFriends] = useState([]);
-  const [tripData, setTripData] = useState(location.state || {});
+  const tripData=location.state;
   const [members, setMembers] = useState(tripData.members || []);
   const [removedMembers, setRemovedMembers] = useState([]);
 
@@ -75,7 +75,7 @@ export default function EditMembers() {
       if (response.data.status) {
         toast.success("Members updated successfully.");
         // Redirect to the trips page or wherever needed
-        navigate("/trips",);
+        navigate("/exploreTrips",{state:response.data.data});
       } else {
         toast.error("Failed to update members.");
       }
@@ -99,7 +99,7 @@ export default function EditMembers() {
           {/* Back Button */}
           <button
             className="bg-blue-600 text-white px-4 py-2 rounded-full flex items-center gap-2 font-bold text-lg hover:bg-blue-700"
-            onClick={() => navigate("/trips")}
+            onClick={() => navigate("/exploreTrips",{state:tripData})}
           >
             <IoArrowBackSharp size={20} /> Back
           </button>
