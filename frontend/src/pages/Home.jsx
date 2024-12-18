@@ -4,10 +4,7 @@ import Navbar from "../components/navbar.jsx";
 export default function Home() {
     const navigate = useNavigate();
 
-    const handleClick1 = async () => {
-        localStorage.clear();
-        navigate("/");
-    };
+   
 
     return (
         <div className="h-[100vh] w-[100vw] flex flex-col relative">
@@ -24,7 +21,7 @@ export default function Home() {
                 Roamio is an AI-driven travel planner that simplifies trip organization, offers real-time expense tracking, AI-generated itineraries, and dynamic recommendations. With features like travel badges, clan affiliations, and challenges, it delivers a fun, personalized travel experience.
                 </p>
                 <button
-                    onClick={handleClick1}
+                    onClick={()=>{navigate("/exploreDest")}}
                     className="bg-[#651225] text-2xl p-[0.6rem] rounded-2xl cursor-pointer hover:bg-[#ebe7ff] hover:text-blue-700 font-bold w-[200px]"
                 >
                     Explore Destinations
