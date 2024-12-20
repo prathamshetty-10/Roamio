@@ -4,24 +4,28 @@ import { BsCalendarDate } from "react-icons/bs";
 import { MdLocationOn } from "react-icons/md";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import {leaveTripsRoute} from "../utils/APIRoutes.js"
+import { leaveTripsRoute } from "../utils/APIRoutes.js";
 import Navbar from "../components/navbar.jsx";
 import toast from "react-hot-toast";
 import axios from "axios";
+import PhotoVault from "../components/photoVault.jsx"; // Importing PhotoVault component
+
 export default function ExploreTrips() {
   const location = useLocation();
   const navigate = useNavigate();
   const [Me, SetMe] = useState({});
   const tripData = location.state;
+  const [showPhotoVault, setShowPhotoVault] = useState(false); // State to toggle PhotoVault
+
   const handleLeave = async () => {
     const confirmDelete = window.confirm("Are you sure you want to leave this trip?");
     if (!confirmDelete) return;
 
     try {
       const response = await axios.post(`${leaveTripsRoute}`, {
-        tripName:tripData.tripName,
-        username:Me.username
-      }); 
+        tripName: tripData.tripName,
+        username: Me.username,
+      });
       if (response.data.status) {
         toast.success("Trip Left successfully");
         navigate("/trips");
@@ -87,7 +91,7 @@ export default function ExploreTrips() {
               {tripData.admin.username !== Me.username && (
                 <button
                   className="bg-red-600 text-white px-4 py-2 mt-0 rounded-full font-bold text-lg hover:bg-red-700"
-                  onClick={()=>handleLeave()}
+                  onClick={() => handleLeave()}
                 >
                   Leave Trip
                 </button>
@@ -105,16 +109,16 @@ export default function ExploreTrips() {
               <MdLocationOn className="mr-2" /> Location: {tripData.location}
             </p>
             <div className="mt-8 w-full max-w-[800px] rounded-lg text-left">
-            <div className="flex mb-3">
-              <h2 className="text-2xl font-bold text-[#651225] mb-4">Members</h2>
-              {tripData.admin.username === Me.username && (
-                <button
-                  className="bg-red-600 text-white px-4 py-1 mt-0 ml-6 rounded-full font-bold text-md hover:bg-red-700"
-                  onClick={() => navigate("/editMembers", { state: tripData })}
-                >
-                  Add/Remove Members
-                </button>
-              )}
+              <div className="flex mb-3">
+                <h2 className="text-2xl font-bold text-[#651225] mb-4">Members</h2>
+                {tripData.admin.username === Me.username && (
+                  <button
+                    className="bg-red-600 text-white px-4 py-1 mt-0 ml-6 rounded-full font-bold text-md hover:bg-red-700"
+                    onClick={() => navigate("/editMembers", { state: tripData })}
+                  >
+                    Add/Remove Members
+                  </button>
+                )}
               </div>
               <div className="flex flex-wrap gap-4">
                 {tripData.members.map((member, index) => (
@@ -140,7 +144,7 @@ export default function ExploreTrips() {
           </button>
           <button
             className="bg-blue-600 text-white px-6 py-3 rounded-full font-bold text-lg hover:bg-blue-700"
-            onClick={() => navigate("/photoVault", { state: tripData })}
+            onClick={() => setShowPhotoVault(!showPhotoVault)} // Toggle PhotoVault
           >
             Photo Vault
           </button>
@@ -151,8 +155,10 @@ export default function ExploreTrips() {
             Finance Management
           </button>
         </div>
+
+        {/* Conditionally render PhotoVault */}
+        {showPhotoVault && <PhotoVault tripData={tripData} Me={Me} />}
       </div>
     </div>
   );
 }
-

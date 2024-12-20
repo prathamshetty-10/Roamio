@@ -15,5 +15,12 @@ const removeTripsRoute=`${host}/api/trip/removeTrips`;
 const leaveTripsRoute=`${host}/api/trip/leaveTrips`;
 const editTripsRoute=`${host}/api/trip/editTrips`;
 const editMembersRoute=`${host}/api/trip/editMembers`;
+const uploadPhotosRoute=`${host}/api/trip/uploadPhotos`;
+const getPhotosRoute=`${host}/api/trip/getPhotos`;
+const deleteSingleRoute=`${host}/api/trip/deleteSingle`;
+const deleteAllRoute=`${host}/api/trip/deleteAll`;
+const downloadAllRoute=`${host}/api/trip/downloadAll`;
+const downloadOneRoute=`${host}/api/trip/downloadOne`;
 export {registerRoute,loginRoute,profileRoute,getFriendsRoute,searchFriendsRoute,getRequestsRoute,sendRequestsRoute,acceptRequestsRoute,
-    rejectRequestsRoute,removeFriendsRoute,getTripsRoute,addTripsRoute,removeTripsRoute,leaveTripsRoute,editMembersRoute,editTripsRoute}
+    rejectRequestsRoute,removeFriendsRoute,getTripsRoute,addTripsRoute,removeTripsRoute,leaveTripsRoute,editMembersRoute,editTripsRoute,
+uploadPhotosRoute,getPhotosRoute,deleteAllRoute,deleteSingleRoute,downloadAllRoute,downloadOneRoute}

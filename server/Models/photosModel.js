@@ -14,6 +14,9 @@ const photosSchema = new mongoose.Schema({
             },
             owner:{
                 type:String
+            },
+            date:{
+                type:Date
             }
         }
     ]

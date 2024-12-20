@@ -9,7 +9,9 @@ import {
     uploadPhotos,
     getPhotos,
     deleteAllPhotos,
-    deleteSinglePhoto
+    deleteSinglePhoto,
+    downloadAllPhotos,
+    downloadSinglePhoto
   } from "../Controllers/tripController.js";
   import {upload} from '../middleware/multer.middleware.js'
   import express from 'express'
@@ -26,4 +28,6 @@ import {
   router.post("/getPhotos", getPhotos);
   router.post("/deleteSingle", deleteSinglePhoto);
   router.post("/deleteAll", deleteAllPhotos);
+  router.post("/downloadAll",downloadAllPhotos);
+  router.post("/downloadOne",downloadSinglePhoto);
   export default router;
