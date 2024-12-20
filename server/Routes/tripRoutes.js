@@ -5,7 +5,11 @@ import {
     removeTrips,
     editTrips,
     leaveTrips,
-    editmembers
+    editmembers,
+    uploadPhotos,
+    getPhotos,
+    deleteAllPhotos,
+    deleteSinglePhoto
   } from "../Controllers/tripController.js";
   import {upload} from '../middleware/multer.middleware.js'
   import express from 'express'
@@ -18,4 +22,8 @@ import {
   router.post("/editTrips", editTrips);
   router.post("/editMembers", editmembers);
   router.post("/leaveTrips", leaveTrips);
+  router.post("/uploadPhotos", upload.array('photos', 20), uploadPhotos);
+  router.post("/getPhotos", getPhotos);
+  router.post("/deleteSingle", deleteSinglePhoto);
+  router.post("/deleteAll", deleteAllPhotos);
   export default router;

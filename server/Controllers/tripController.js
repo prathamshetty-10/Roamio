@@ -1,5 +1,6 @@
 import User from "../Models/userModel.js"; // Import the User model
 import Trip from "../Models/tripModel.js"; // Import the Trip model
+import Photos from "../Models/photosModel.js"
 import cloudinary from 'cloudinary'
 import fs from "fs/promises"
 export const getTrips = async (req, res, next) => {
@@ -295,3 +296,205 @@ export const editmembers = async (req, res, next) => {
     next(ex);
   }
 };
+export const uploadPhotos = async (req, res, next) => {
+  try {
+      const { tripName, owner } = req.body;
+      
+      if (!tripName) {
+          return res.status(400).json({
+              success: false,
+              message: "Trip name is required"
+          });
+      }
+
+      if (!req.files || req.files.length === 0) {
+          return res.status(400).json({
+              success: false,
+              message: "No photos uploaded"
+          });
+      }
+
+      // First check if trip exists to ensure folder consistency
+      let photoCollection = await Photos.findOne({ tripName });
+      let folderPath = tripName.toLowerCase().replace(/\s+/g, '-'); // Normalize folder name
+
+      const uploadedPhotos = [];
+      const options = {
+          folder: folderPath,
+          use_filename: true,
+          unique_filename: true, // Enable unique filenames
+          overwrite: false,
+      };
+
+      // Process each photo
+      for (const file of req.files) {
+          try {
+              const result = await cloudinary.v2.uploader.upload(file.path, options);
+              if (result) {
+                  uploadedPhotos.push({
+                      photo: result.secure_url,
+                      public_id:result.public_id,
+                      owner: owner
+                  });
+                  
+                  // Clean up local file
+                  await fs.promises.unlink(file.path);
+              }
+          } catch (uploadError) {
+              console.error(`Error uploading file ${file.originalname}:`, uploadError);
+          }
+      }
+
+      if (photoCollection) {
+          // Add new photos to existing trip
+          photoCollection.photos.push(...uploadedPhotos);
+          await photoCollection.save();
+      } else {
+          // Create new trip with photos
+          photoCollection = await Photos.create({
+              tripName,
+              photos: uploadedPhotos
+          });
+      }
+
+      return res.json({
+          status: true,
+          message: `Successfully uploaded ${uploadedPhotos.length} photos to trip "${tripName}"`,
+          data: photoCollection
+      });
+
+  } catch (error) {
+      console.error(error);
+      next(error);
+  }
+};
+export const getPhotos = async (req, res, next) => {
+  try {
+      const { tripName } = req.body;
+
+      if (!tripName) {
+          return res.status(400).json({
+              success: false,
+              message: "Trip name is required"
+          });
+      }
+
+      // Find the photo collection for the given tripName
+      const photoCollection = await Photos.findOne({ tripName });
+
+      if (!photoCollection) {
+          return res.status(404).json({
+              success: false,
+              message: `No photos found for trip "${tripName}"`
+          });
+      }
+
+      return res.json({
+          success: true,
+          message: `Photos retrieved for trip "${tripName}"`,
+          data: photoCollection
+      });
+  } catch (error) {
+      console.error(error);
+      next(error);
+  }
+};
+export const deleteSinglePhoto = async (req, res, next) => {
+  try {
+      const { tripName, public_id } = req.body;
+
+      if (!tripName || !public_id) {
+          return res.status(400).json({
+              success: false,
+              message: "Trip name and photo public_id are required"
+          });
+      }
+
+      // Fetch the photo collection for the given tripName
+      const photoCollection = await Photos.findOne({ tripName });
+
+      if (!photoCollection) {
+          return res.status(404).json({
+              success: false,
+              message: `No photos found for trip "${tripName}"`
+          });
+      }
+
+      // Find and remove the photo from the photos array
+      const photoIndex = photoCollection.photos.findIndex(
+          (photo) => photo.public_id === public_id
+      );
+
+      if (photoIndex === -1) {
+          return res.status(404).json({
+              success: false,
+              message: "Photo not found in the trip collection"
+          });
+      }
+
+      const [removedPhoto] = photoCollection.photos.splice(photoIndex, 1);
+
+      // Delete the photo from Cloudinary
+      try {
+          await cloudinary.v2.uploader.destroy(removedPhoto.public_id); // Use public_id to delete
+      } catch (error) {
+          console.error(`Error deleting photo with public_id ${removedPhoto.public_id}:`, error);
+      }
+
+      // Save the updated collection
+      await photoCollection.save();
+
+      return res.json({
+          success: true,
+          message: `Successfully deleted photo with public_id "${public_id}" from trip "${tripName}"`,
+          data: photoCollection
+      });
+  } catch (error) {
+      console.error(error);
+      next(error);
+  }
+};
+export const deleteAllPhotos = async (req, res, next) => {
+  try {
+      const { tripName } = req.body;
+
+      if (!tripName) {
+          return res.status(400).json({
+              success: false,
+              message: "Trip name is required"
+          });
+      }
+
+      // Fetch the photo collection for the given tripName
+      const photoCollection = await Photos.findOne({ tripName });
+
+      if (!photoCollection) {
+          return res.status(404).json({
+              success: false,
+              message: `No photos found for trip "${tripName}"`
+          });
+      }
+
+      // Delete each photo from Cloudinary
+      for (const photo of photoCollection.photos) {
+          try {
+              await cloudinary.v2.uploader.destroy(photo.public_id); // Use public_id to delete
+          } catch (error) {
+              console.error(`Error deleting photo with public_id ${photo.public_id}:`, error);
+          }
+      }
+
+      // Delete the document from the database
+      await Photos.deleteOne({ tripName });
+
+      return res.json({
+          success: true,
+          message: `Successfully deleted all photos for trip "${tripName}"`
+      });
+  } catch (error) {
+      console.error(error);
+      next(error);
+  }
+};
+
+
