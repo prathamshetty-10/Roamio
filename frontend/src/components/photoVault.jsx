@@ -16,6 +16,7 @@ export default function PhotoVault({ tripData, Me }) {
   const [newPhotos, setNewPhotos] = useState([]);
   const [isUploading, setIsUploading] = useState(false);
   const [isDeletingAll, setIsDeletingAll] = useState(false);
+  const [isDownloadingAll, setIsDownloadingAll] = useState(false);
 
   const fetchPhotos = async () => {
     try {
@@ -117,34 +118,92 @@ export default function PhotoVault({ tripData, Me }) {
   };
 
   const handleDownloadAll = async () => {
+    setIsDownloadingAll(true); // Set loading state
     try {
-      const response = await axios.post(downloadAllRoute, { tripName: tripData.tripName }, { responseType: "blob" });
-      const blob = new Blob([response.data], { type: "application/zip" });
-      const url = window.URL.createObjectURL(blob);
+      const response = await axios.post(
+        `${downloadAllRoute}`,
+        { tripName: tripData.tripName },
+        {
+          responseType: "blob",
+          headers: {
+            Accept: "application/zip",
+          },
+          timeout: 300000, // 5 minutes
+        }
+      );
+  
+      if (!response.data.type.includes("zip")) {
+        throw new Error("Invalid response type");
+      }
+  
+      const url = window.URL.createObjectURL(response.data);
       const link = document.createElement("a");
       link.href = url;
-      link.download = `${tripData.tripName}_photos.zip`;
+  
+      const normalizedTripName = tripData.tripName.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+      link.download = `${normalizedTripName}-photos.zip`;
+  
+      document.body.appendChild(link);
       link.click();
+      document.body.removeChild(link);
+  
+      window.URL.revokeObjectURL(url);
+  
+      toast.success("Download started successfully!");
     } catch (error) {
       console.error("Error downloading all photos:", error);
-      toast.error("Failed to download photos.");
+      toast.error(
+        error.response?.status === 404
+          ? "No photos found for this trip."
+          : "Failed to download photos. Please try again."
+      );
+    } finally {
+      setIsDownloadingAll(false); // Reset loading state
     }
   };
-
   const handleDownloadOne = async (photo) => {
     try {
-      const response = await axios.post(downloadOneRoute, { public_id: photo.public_id }, { responseType: "blob" });
-      const blob = new Blob([response.data], { type: "image/jpeg" });
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `${photo.public_id}.jpg`;
-      link.click();
+        const response = await axios.post(
+            `${downloadOneRoute}`, 
+            { 
+                tripName: tripData.tripName,  // Make sure to include tripName
+                public_id: photo.public_id 
+            }, 
+            { 
+                responseType: "blob",
+                headers: {
+                    'Accept': 'image/jpeg'  // Explicitly accept jpeg images
+                }
+            }
+        );
+
+        // Verify the response type
+        if (!response.data.type.includes('image')) {
+            throw new Error('Invalid response type');
+        }
+
+        // Create download link
+        const url = window.URL.createObjectURL(response.data);
+        const link = document.createElement("a");
+        link.href = url;
+        
+        // Ensure filename has extension
+        const filename = photo.public_id.split('/').pop();
+        link.download = filename.endsWith('.jpg') ? filename : `${filename}.jpg`;
+        
+        // Trigger download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // Cleanup
+        window.URL.revokeObjectURL(url);
+        
     } catch (error) {
-      console.error("Error downloading photo:", error);
-      toast.error("Failed to download photo.");
+        console.error("Error downloading photo:", error);
+        toast.error("Failed to download photo. Please try again.");
     }
-  };
+};
 
   useEffect(() => {
     fetchPhotos();
@@ -195,12 +254,42 @@ export default function PhotoVault({ tripData, Me }) {
 
       {/* Download All and Delete All Buttons */}
       <div className="mb-6 flex space-x-4">
-        <button
-          className="bg-green-600 text-white px-4 py-2 rounded-full font-bold hover:bg-green-700"
-          onClick={handleDownloadAll}
-        >
-          Download All Photos
-        </button>
+      <button
+      className={`${
+        isDownloadingAll ? "bg-green-400" : "bg-green-600"
+      } text-white px-4 py-2 rounded-full font-bold hover:bg-green-700`}
+      onClick={handleDownloadAll}
+      disabled={isDownloadingAll}
+    >
+      {isDownloadingAll ? (
+        <div className="flex items-center">
+          <svg
+            className="animate-spin h-5 w-5 text-white mr-2"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+            ></circle>
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+            ></path>
+          </svg>
+          Downloading...
+        </div>
+      ) : (
+        "Download All Photos"
+      )}
+    </button>
+    
         {tripData.admin.username == Me.username && (
           <button
             className={`${

@@ -504,140 +504,176 @@ export const deleteAllPhotos = async (req, res, next) => {
 };
 
 export const downloadAllPhotos = async (req, res, next) => {
-    try {
-        const { tripName } = req.body;
+  try {
+      const { tripName } = req.body;
 
-        if (!tripName) {
-            return res.json({
-                success: false,
-                message: "Trip name is required"
-            });
-        }
+      if (!tripName) {
+          return res.status(400).json({
+              success: false,
+              message: "Trip name is required"
+          });
+      }
 
-        // Find the photo collection for the given tripName
-        const photoCollection = await Photos.findOne({ tripName });
+      // Find the photo collection for the given tripName
+      const photoCollection = await Photos.findOne({ tripName });
 
-        if (!photoCollection) {
-            return res.json({
-                success: false,
-                message: `No photos found for trip "${tripName}"`
-            });
-        }
+      if (!photoCollection) {
+          return res.status(404).json({
+              success: false,
+              message: `No photos found for trip "${tripName}"`
+          });
+      }
 
-        // Create a ZIP archive
-        const archive = archiver('zip', {
-            zlib: { level: 9 }
-        });
+      // Create a ZIP archive
+      const archive = archiver('zip', {
+          zlib: { level: 9 }
+      });
 
-        // Normalize the folder name
-        const normalizedTripName = tripName.toLowerCase().replace(/\s+/g, '-');
+      // Handle archive errors
+      archive.on('error', (err) => {
+          throw err;
+      });
 
-        // Set headers for ZIP download
-        res.setHeader('Content-Type', 'application/zip');
-        res.setHeader('Content-Disposition', `attachment; filename="${normalizedTripName}"`);
-        archive.pipe(res);
+      // Normalize the folder name
+      const normalizedTripName = tripName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const zipFileName = `${normalizedTripName}-photos.zip`;
 
-        const errors = [];
+      // Set headers for ZIP download
+      res.setHeader('Content-Type', 'application/zip');
+      res.setHeader('Content-Disposition', `attachment; filename="${zipFileName}"`);
 
-        for (const photo of photoCollection.photos) {
-            try {
-                const response = await axios({
-                    method: 'get',
-                    url: photo.photo,
-                    responseType: 'stream'
-                });
+      // Pipe archive data to response
+      archive.pipe(res);
 
-                // Extract filename from public_id
-                const filename = photo.public_id.split('/').pop();
-                
-                // Add the photo to the archive within the trip name folder
-                archive.append(response.data, { 
-                    name: `${normalizedTripName}/${filename}`,
-                    prefix: normalizedTripName
-                });
-            } catch (error) {
-                console.error(`Error downloading photo ${photo.public_id}:`, error);
-                errors.push(photo.public_id);
-            }
-        }
+      const errors = [];
+      const successfulDownloads = [];
 
-        // Add a simple info.txt file in the folder with updated info including dates
-        archive.append(
-            `Trip: ${tripName}\nTotal Photos: ${photoCollection.photos.length}\nDownloaded: ${new Date().toLocaleString()}\nPhoto Upload Dates:\n${
-                photoCollection.photos.map(photo => 
-                    `${photo.public_id.split('/').pop()}: ${photo.date ? photo.date.toLocaleString() : 'Date not available'}`
-                ).join('\n')
-            }`, 
-            { name: `${normalizedTripName}/info.txt` }
-        );
+      // Process photos sequentially to avoid memory issues
+      for (const photo of photoCollection.photos) {
+          try {
+              const response = await axios({
+                  method: 'get',
+                  url: photo.photo,
+                  responseType: 'arraybuffer'  // Changed from 'stream' to 'arraybuffer'
+              });
 
-        // Finalize the archive
-        await archive.finalize();
+              // Ensure filename has extension
+              let filename = photo.public_id.split('/').pop();
+              if (!filename.toLowerCase().endsWith('.jpg')) {
+                  filename += '.jpg';
+              }
 
-    } catch (error) {
-        console.error(error);
-        next(error);
-    }
+              // Add the photo to the archive
+              archive.append(Buffer.from(response.data), {
+                  name: `${normalizedTripName}/${filename}`
+              });
+
+              successfulDownloads.push(filename);
+          } catch (error) {
+              console.error(`Error downloading photo ${photo.public_id}:`, error);
+              errors.push(photo.public_id);
+          }
+      }
+
+      // Add info.txt with metadata
+      const infoContent = `
+Trip Name: ${tripName}
+Download Date: ${new Date().toLocaleString()}
+Total Photos: ${photoCollection.photos.length}
+Successfully Downloaded: ${successfulDownloads.length}
+Failed Downloads: ${errors.length}
+
+Photo Details:
+${photoCollection.photos.map(photo => {
+  const filename = photo.public_id.split('/').pop();
+  return `- ${filename}
+Upload Date: ${photo.date ? photo.date.toLocaleString() : 'Date not available'}
+Owner: ${photo.owner || 'Not specified'}
+Status: ${errors.includes(photo.public_id) ? 'Failed to download' : 'Successfully downloaded'}`;
+}).join('\n\n')}
+
+${errors.length > 0 ? `\nFailed Downloads:\n${errors.join('\n')}` : ''}
+      `.trim();
+
+      archive.append(infoContent, { name: `${normalizedTripName}/info.txt` });
+
+      // Finalize the archive
+      await archive.finalize();
+
+  } catch (error) {
+      console.error('Server error:', error);
+      // If headers haven't been sent, send error response
+      if (!res.headersSent) {
+          res.status(500).json({
+              success: false,
+              message: "Error creating zip archive",
+              error: error.message
+          });
+      }
+      next(error);
+  }
 };
 
 export const downloadSinglePhoto = async (req, res, next) => {
-    try {
-        const { tripName, public_id } = req.body;
+  try {
+      const { tripName, public_id } = req.body;
 
-        if (!tripName || !public_id) {
-            return res.json({
-                success: false,
-                message: "Trip name and photo public_id are required"
-            });
-        }
+      if (!tripName || !public_id) {
+          return res.json({
+              success: false,
+              message: "Trip name and photo public_id are required"
+          });
+      }
 
-        // Find the photo collection and specific photo
-        const photoCollection = await Photos.findOne({ tripName });
+      // Find the photo collection and specific photo
+      const photoCollection = await Photos.findOne({ tripName });
 
-        if (!photoCollection) {
-            return res.json({
-                success: false,
-                message: `No photos found for trip "${tripName}"`
-            });
-        }
+      if (!photoCollection) {
+          return res.json({
+              success: false,
+              message: `No photos found for trip "${tripName}"`
+          });
+      }
 
-        const photo = photoCollection.photos.find(p => p.public_id === public_id);
+      const photo = photoCollection.photos.find(p => p.public_id === public_id);
 
-        if (!photo) {
-            return res.json({
-                success: false,
-                message: "Photo not found in the trip collection"
-            });
-        }
+      if (!photo) {
+          return res.json({
+              success: false,
+              message: "Photo not found in the trip collection"
+          });
+      }
 
-        try {
-            const response = await axios({
-                method: 'get',
-                url: photo.photo,
-                responseType: 'stream'
-            });
+      try {
+          const response = await axios({
+              method: 'get',
+              url: photo.photo,
+              responseType: 'arraybuffer'  // Changed from 'stream' to 'arraybuffer'
+          });
 
-            // Extract filename from public_id
-            const filename = public_id.split('/').pop();
-            
-            // Set headers for file download
-            res.setHeader('Content-Type', 'image/jpeg');
-            res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+          // Extract filename from public_id and ensure it has an extension
+          const filename = `${public_id.split('/').pop()}.jpg`;
 
-            // Stream the photo directly to the response
-            response.data.pipe(res);
+          // Set proper headers for file download
+          res.setHeader('Content-Type', 'image/jpeg');
+          res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+          res.setHeader('Content-Length', response.data.length);
 
-        } catch (error) {
-            console.error(`Error downloading photo ${public_id}:`, error);
-            return res.json({
-                success: false,
-                message: "Error downloading photo"
-            });
-        }
+          // Send the buffer directly
+          return res.send(response.data);
 
-    } catch (error) {
-        console.error(error);
-        next(error);
-    }
+      } catch (error) {
+          console.error(`Error downloading photo ${public_id}:`, error);
+          return res.json({
+              success: false,
+              message: "Error downloading photo",
+              error: error.message
+          });
+      }
+
+  } catch (error) {
+      console.error('Server error:', error);
+      next(error);
+  }
 };
 
