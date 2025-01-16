@@ -1,0 +1,299 @@
+name,state,type,secondary_types,best_season,destination_id,budget_category,avg_daily_cost,coordinates,accessibility_score,crowd_level,cultural_significance,adventure_score,relaxation_score,nature_score,nightlife_score,family_friendly,food_scene,shopping_score,tags
+Kasol,Himachal Pradesh,Mountain,"['Adventure', 'Nature', 'Culture']","['March', 'April', 'May', 'June', 'September', 'October']",1,1.0,1000.0,"(22.5659, 81.6263)",0.0,0.0,0,4,4,4,2,0,0,0,Not Available
+Dharamshala,Himachal Pradesh,Mountain,"['Spiritual', 'Nature', 'Cultural']","['March', 'April', 'May', 'September', 'October']",2,1.0,1000.0,"(15.8434, 72.0267)",0.0,0.0,0,4,4,4,1,0,0,0,Not Available
+McLeodganj,Himachal Pradesh,Mountain,"['Cultural', 'Adventure', 'Food']","['March', 'April', 'May', 'September', 'October']",3,1.0,1000.0,"(24.6501, 93.644)",0.0,0.0,0,5,5,4,1,0,0,0,Not Available
+Bir Billing,Himachal Pradesh,Mountain,"['Adventure', 'Nature', 'Spiritual']","['March', 'April', 'May', 'September', 'October']",4,1.0,1000.0,"(19.5739, 88.3198)",0.0,0.0,0,5,4,5,2,0,0,0,Not Available
+Shimla,Himachal Pradesh,Mountain,"['Heritage', 'Nature', 'Family']","['March', 'April', 'May', 'June', 'September']",5,1.0,1000.0,"(26.1024, 86.2097)",0.0,0.0,0,4,5,5,3,0,0,0,Not Available
+Dalhousie,Himachal Pradesh,Mountain,"['Nature', 'Adventure', 'Heritage']","['March', 'April', 'May', 'June', 'September']",6,1.0,1000.0,"(17.4504, 69.7766)",0.0,0.0,0,4,3,4,3,0,0,0,Not Available
+Kullu,Himachal Pradesh,Mountain,"['Adventure', 'Nature', 'Culture']","['March', 'April', 'May', 'June', 'September', 'October']",7,1.0,1000.0,"(8.7181, 85.321)",0.0,0.0,0,4,3,4,2,0,0,0,Not Available
+Spiti Valley,Himachal Pradesh,Mountain,"['Adventure', 'Nature', 'Cultural']","['May', 'June', 'July', 'August', 'September']",8,1.0,1000.0,"(33.5133, 81.0415)",0.0,0.0,0,5,5,4,2,0,0,0,Not Available
+Kasauli,Himachal Pradesh,Mountain,"['Heritage', 'Nature', 'Family']","['March', 'April', 'May', 'June', 'September']",9,1.0,1000.0,"(36.0363, 91.7266)",0.0,0.0,0,4,3,5,1,0,0,0,Not Available
+Chamba,Himachal Pradesh,Mountain,"['Heritage', 'Nature', 'Adventure']","['March', 'April', 'May', 'June', 'September']",10,1.0,1000.0,"(28.8292, 82.7733)",0.0,0.0,0,4,3,4,3,0,0,0,Not Available
+Tirthan Valley,Himachal Pradesh,Mountain,"['Nature', 'Adventure', 'Culture']","['March', 'April', 'May', 'June', 'September']",11,1.0,1000.0,"(9.4544, 81.9496)",0.0,0.0,0,4,4,5,1,0,0,0,Not Available
+Jaisalmer,Himachal Pradesh,Heritage,"['Cultural', 'Adventure']","['November', 'December', 'January', 'February']",30,1.0,1000.0,"(27.724, 86.8066)",0.0,0.0,5,0,0,0,4,0,0,0,Not Available
+Auli,Himachal Pradesh,Mountain,"['Adventure', 'Nature', 'Skiing']","['December', 'January', 'February']",31,1.0,1000.0,"(34.682, 92.6058)",0.0,0.0,0,4,4,5,3,0,0,0,Not Available
+Kullu Valley,Himachal Pradesh,Mountain,"['Adventure', 'Nature', 'Culture']","['March', 'April', 'May', 'June', 'September']",32,1.0,1000.0,"(36.9632, 85.9094)",0.0,0.0,0,4,3,4,2,0,0,0,Not Available
+Shoghi,Himachal Pradesh,Mountain,"['Nature', 'Adventure', 'Family']","['March', 'April', 'May', 'June', 'September']",33,1.0,1000.0,"(27.0216, 94.8219)",0.0,0.0,0,4,4,4,3,0,0,0,Not Available
+Naina Devi,Himachal Pradesh,Mountain,"['Spiritual', 'Nature', 'Adventure']","['March', 'April', 'May', 'September', 'October']",34,1.0,1000.0,"(11.3416, 70.1398)",0.0,0.0,0,5,4,4,2,0,0,0,Not Available
+Tosh,Himachal Pradesh,Mountain,"['Adventure', 'Nature', 'Culture']","['March', 'April', 'May', 'September', 'October']",35,1.0,1000.0,"(17.8379, 78.4278)",0.0,0.0,0,4,4,4,3,0,0,0,Not Available
+Triund,Himachal Pradesh,Mountain,"['Adventure', 'Nature', 'Trekking']","['March', 'April', 'May', 'June', 'September']",36,1.0,1000.0,"(21.3246, 88.726)",0.0,0.0,0,4,5,4,2,0,0,0,Not Available
+Khajjjiar,Himachal Pradesh,Mountain,"['Nature', 'Adventure', 'Heritage']","['March', 'April', 'May', 'September']",37,1.0,1000.0,"(11.6012, 86.6245)",0.0,0.0,0,4,4,5,2,0,0,0,Not Available
+Churdhar,Himachal Pradesh,Mountain,"['Adventure', 'Spiritual', 'Nature']","['March', 'April', 'May', 'June', 'September']",39,1.0,1000.0,"(36.9142, 94.0296)",0.0,0.0,0,5,3,4,1,0,0,0,Not Available
+Gushaini,Himachal Pradesh,Mountain,"['Nature', 'Adventure', 'Relaxation']","['March', 'April', 'May', 'September', 'October']",40,1.0,1000.0,"(22.5968, 69.2892)",0.0,0.0,0,5,5,4,1,0,0,0,Not Available
+Kalpa,Himachal Pradesh,Mountain,"['Adventure', 'Nature', 'Cultural']","['March', 'April', 'May', 'June', 'September']",42,1.0,1000.0,"(30.1463, 78.4475)",0.0,0.0,0,4,4,5,1,0,0,0,Not Available
+Sangla Valley,Himachal Pradesh,Mountain,"['Nature', 'Adventure', 'Culture']","['March', 'April', 'May', 'September', 'October']",43,1.0,1000.0,"(17.5844, 96.6951)",0.0,0.0,0,4,3,4,3,0,0,0,Not Available
+Srinagar,Jammu and Kashmir,Heritage,"['Cultural', 'Nature', 'Adventure']","['March', 'April', 'May', 'June', 'September']",44,1.0,1000.0,"(30.645, 72.5627)",0.0,0.0,5,0,0,0,2,0,0,0,Not Available
+Gulmarg,Jammu and Kashmir,Mountain,"['Adventure', 'Nature', 'Skiing']","['December', 'January', 'February']",45,1.0,1000.0,"(25.879, 81.7667)",0.0,0.0,0,5,5,4,2,0,0,0,Not Available
+Pahalgam,Jammu and Kashmir,Mountain,"['Adventure', 'Nature', 'Spiritual']","['March', 'April', 'May', 'June', 'September']",46,1.0,1000.0,"(18.3164, 93.2486)",0.0,0.0,0,5,3,4,3,0,0,0,Not Available
+Leh,Jammu and Kashmir,Mountain,"['Adventure', 'Nature', 'Cultural']","['June', 'July', 'August']",47,1.0,1000.0,"(36.9837, 68.3786)",0.0,0.0,0,5,3,4,2,0,0,0,Not Available
+Sonamarg,Jammu and Kashmir,Mountain,"['Adventure', 'Nature', 'Cultural']","['June', 'July', 'August']",48,1.0,1000.0,"(32.1562, 71.395)",0.0,0.0,0,5,3,5,3,0,0,0,Not Available
+Zanskar Valley,Jammu and Kashmir,Mountain,"['Adventure', 'Nature', 'Trekking']","['July', 'August', 'September']",49,1.0,1000.0,"(24.692, 91.7859)",0.0,0.0,0,4,5,4,3,0,0,0,Not Available
+Kargil,Jammu and Kashmir,Mountain,"['Adventure', 'Nature', 'Cultural']","['June', 'July', 'August']",50,1.0,1000.0,"(19.9116, 90.6362)",0.0,0.0,0,5,5,4,1,0,0,0,Not Available
+Kupwara,Jammu and Kashmir,Nature,"['Nature', 'Adventure', 'Tranquil']","['March', 'April', 'May', 'June', 'September']",51,1.0,1000.0,"(31.0136, 83.1599)",0.0,0.0,0,4,5,5,1,0,0,0,Not Available
+Jammu,Jammu and Kashmir,Heritage,"['Cultural', 'Spiritual', 'Adventure']","['March', 'April', 'May', 'June', 'September']",52,1.0,1000.0,"(24.9263, 90.5329)",0.0,0.0,5,0,0,0,3,0,0,0,Not Available
+Vaishno Devi,Jammu and Kashmir,Spiritual,"['Cultural', 'Adventure', 'Spiritual']","['March', 'April', 'May', 'June', 'September']",53,1.0,1000.0,"(33.0356, 92.4481)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Amarnath,Jammu and Kashmir,Spiritual,"['Spiritual', 'Adventure']","['June', 'July', 'August']",54,1.0,1000.0,"(16.9937, 78.239)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Pulwama,Jammu and Kashmir,Nature,"['Nature', 'Adventure', 'Cultural']","['March', 'April', 'May', 'June', 'September']",55,1.0,1000.0,"(19.8738, 95.7296)",0.0,0.0,0,4,5,5,2,0,0,0,Not Available
+Hemis,Jammu and Kashmir,Cultural,"['Cultural', 'Adventure', 'Spiritual']","['June', 'July', 'August']",56,1.0,1000.0,"(19.7619, 91.1807)",0.0,0.0,5,0,0,0,0,5,0,0,Not Available
+Achabal,Jammu and Kashmir,Heritage,"['Cultural', 'Nature']","['March', 'April', 'May', 'June', 'September']",57,1.0,1000.0,"(8.7229, 96.2333)",0.0,0.0,4,0,0,0,3,0,0,0,Not Available
+Batote,Jammu and Kashmir,Mountain,"['Nature', 'Adventure', 'Relaxation']","['March', 'April', 'May', 'June']",58,1.0,1000.0,"(30.7917, 75.2732)",0.0,0.0,0,4,3,5,2,0,0,0,Not Available
+Jaipur,Rajasthan,Heritage,"['Cultural', 'Shopping', 'Food']","['October', 'November', 'December', 'January', 'February']",59,1.0,1000.0,"(8.7241, 88.4135)",0.0,0.0,4,0,0,0,2,0,0,0,Not Available
+Udaipur,Rajasthan,Heritage,"['Cultural', 'Romantic', 'Heritage']","['October', 'November', 'December', 'January', 'February']",60,1.0,1000.0,"(36.6607, 94.6343)",0.0,0.0,5,0,0,0,4,0,0,0,Not Available
+Jodhpur,Rajasthan,Heritage,"['Cultural', 'Shopping', 'Adventure']","['October', 'November', 'December', 'January', 'February']",61,1.0,1000.0,"(24.9531, 68.903)",0.0,0.0,5,0,0,0,3,0,0,0,Not Available
+Pushkar,Rajasthan,Cultural,"['Spiritual', 'Adventure', 'Shopping']","['October', 'November', 'December', 'January', 'February']",63,1.0,1000.0,"(17.5979, 70.4745)",0.0,0.0,5,0,0,0,0,5,0,0,Not Available
+Mount Abu,Rajasthan,Mountain,"['Nature', 'Cultural', 'Relaxation']","['October', 'November', 'December', 'January', 'February']",64,1.0,1000.0,"(31.8334, 96.1749)",0.0,0.0,0,5,3,4,2,0,0,0,Not Available
+Bikaner,Rajasthan,Heritage,"['Cultural', 'Desert', 'Adventure']","['October', 'November', 'December', 'January', 'February']",65,1.0,1000.0,"(21.5671, 86.7538)",0.0,0.0,4,0,0,0,3,0,0,0,Not Available
+Chittorgarh,Rajasthan,Heritage,"['Cultural', 'Historical', 'Adventure']","['October', 'November', 'December', 'January', 'February']",66,1.0,1000.0,"(10.8898, 71.7667)",0.0,0.0,4,0,0,0,4,0,0,0,Not Available
+Ajmer,Rajasthan,Heritage,"['Cultural', 'Spiritual', 'Adventure']","['October', 'November', 'December', 'January', 'February']",67,1.0,1000.0,"(14.5152, 90.4708)",0.0,0.0,4,0,0,0,4,0,0,0,Not Available
+Ranthambore,Rajasthan,Wildlife,"['Nature', 'Adventure', 'Wildlife']","['October', 'November', 'December', 'January']",68,1.0,1000.0,"(21.092, 89.6882)",0.0,0.0,0,4,4,5,0,3,0,0,Not Available
+Kumbhalgarh,Rajasthan,Heritage,"['Cultural', 'Nature', 'Adventure']","['October', 'November', 'December', 'January', 'February']",69,1.0,1000.0,"(26.2367, 83.9425)",0.0,0.0,4,0,0,0,3,0,0,0,Not Available
+Nathdwara,Rajasthan,Cultural,"['Spiritual', 'Cultural', 'Adventure']","['October', 'November', 'December', 'January', 'February']",70,1.0,1000.0,"(14.2896, 68.2991)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Sawai Madhopur,Rajasthan,Wildlife,"['Nature', 'Adventure', 'Wildlife']","['October', 'November', 'December', 'January']",71,1.0,1000.0,"(22.578, 94.4701)",0.0,0.0,0,5,2,5,0,3,0,0,Not Available
+Barmer,Rajasthan,Desert,"['Adventure', 'Cultural', 'Desert']","['October', 'November', 'December', 'January', 'February']",72,1.0,1000.0,"(17.1822, 77.6171)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Deshnok,Rajasthan,Heritage,"['Cultural', 'Spiritual', 'Adventure']","['October', 'November', 'December', 'January', 'February']",73,1.0,1000.0,"(28.6761, 92.4452)",0.0,0.0,5,0,0,0,2,0,0,0,Not Available
+Tirupati,Andhra Pradesh,Spiritual,"['Cultural', 'Spiritual', 'Family']","['January', 'February', 'March', 'September', 'October']",74,1.0,1000.0,"(33.7326, 85.9218)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Visakhapatnam,Andhra Pradesh,Beach,"['Nature', 'Adventure', 'Relaxation']","['November', 'December', 'January', 'February', 'March']",75,1.0,1000.0,"(9.9219, 69.0712)",0.0,0.0,0,5,4,4,3,0,0,0,Not Available
+Araku Valley,Andhra Pradesh,Nature,"['Adventure', 'Relaxation', 'Mountain']","['November', 'December', 'January', 'February', 'March']",76,1.0,1000.0,"(12.4848, 73.1826)",0.0,0.0,0,3,4,5,1,0,0,0,Not Available
+Lepakshi,Andhra Pradesh,Heritage,"['Cultural', 'Historical', 'Spiritual']","['October', 'November', 'December', 'January', 'February']",77,1.0,1000.0,"(26.8164, 77.943)",0.0,0.0,4,0,0,0,2,0,0,0,Not Available
+Vijayawada,Andhra Pradesh,Cultural,"['Spiritual', 'Cultural', 'Family']","['October', 'November', 'December', 'January', 'February']",78,1.0,1000.0,"(32.0466, 86.0009)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Amaravati,Andhra Pradesh,Heritage,"['Cultural', 'Historical', 'Spiritual']","['October', 'November', 'December', 'January', 'February']",79,1.0,1000.0,"(30.1994, 70.0718)",0.0,0.0,4,0,0,0,2,0,0,0,Not Available
+Srikalahasti,Andhra Pradesh,Spiritual,"['Spiritual', 'Cultural', 'Heritage']","['October', 'November', 'December', 'January', 'February']",80,1.0,1000.0,"(31.0383, 82.0069)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Gandikota,Andhra Pradesh,Nature,"['Adventure', 'Nature', 'Historical']","['October', 'November', 'December', 'January', 'February']",81,1.0,1000.0,"(12.6094, 92.782)",0.0,0.0,0,4,4,5,2,0,0,0,Not Available
+Ahobilam,Andhra Pradesh,Spiritual,"['Adventure', 'Nature', 'Spiritual']","['October', 'November', 'December', 'January', 'February']",82,1.0,1000.0,"(18.5461, 68.928)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Horsley Hills,Andhra Pradesh,Mountain,"['Nature', 'Relaxation', 'Adventure']","['October', 'November', 'December', 'January', 'February']",83,1.0,1000.0,"(24.4909, 90.2971)",0.0,0.0,0,4,4,4,1,0,0,0,Not Available
+Tawang,Arunachal Pradesh,Mountain,"['Adventure', 'Spiritual', 'Nature']","['March', 'April', 'May', 'June', 'September', 'October']",84,1.0,1000.0,"(16.7973, 92.7626)",0.0,0.0,0,5,3,4,2,0,0,0,Not Available
+Ziro Valley,Arunachal Pradesh,Nature,"['Adventure', 'Culture', 'Nature']","['March', 'April', 'May', 'October', 'November']",85,1.0,1000.0,"(32.661, 75.7686)",0.0,0.0,0,4,4,5,2,0,0,0,Not Available
+Bomdila,Arunachal Pradesh,Mountain,"['Nature', 'Spiritual', 'Adventure']","['March', 'April', 'May', 'June', 'September', 'October']",86,1.0,1000.0,"(28.2855, 96.4221)",0.0,0.0,0,5,4,5,1,0,0,0,Not Available
+Itanagar,Arunachal Pradesh,Cultural,"['Heritage', 'Culture', 'Family']","['October', 'November', 'December', 'January', 'February']",87,1.0,1000.0,"(17.8487, 77.9164)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Dirang,Arunachal Pradesh,Mountain,"['Nature', 'Relaxation', 'Adventure']","['March', 'April', 'May', 'October', 'November']",88,1.0,1000.0,"(8.9437, 81.1691)",0.0,0.0,0,5,3,5,1,0,0,0,Not Available
+Pasighat,Arunachal Pradesh,Nature,"['Adventure', 'Water Sports', 'Nature']","['October', 'November', 'December', 'January', 'February']",89,1.0,1000.0,"(31.246, 89.5376)",0.0,0.0,0,3,5,5,1,0,0,0,Not Available
+Namdapha National Park,Arunachal Pradesh,Wildlife,"['Nature', 'Adventure', 'Photography']","['October', 'November', 'December', 'January', 'February']",90,1.0,1000.0,"(23.6037, 88.4656)",0.0,0.0,0,5,2,5,0,5,0,0,Not Available
+Sela Pass,Arunachal Pradesh,Mountain,"['Adventure', 'Nature', 'Relaxation']","['March', 'April', 'May', 'June', 'September', 'October']",91,1.0,1000.0,"(26.4371, 85.7363)",0.0,0.0,0,5,4,4,3,0,0,0,Not Available
+Mechuka,Arunachal Pradesh,Nature,"['Adventure', 'Culture', 'Relaxation']","['October', 'November', 'December', 'January', 'February']",92,1.0,1000.0,"(8.9418, 81.1273)",0.0,0.0,0,3,5,5,2,0,0,0,Not Available
+Roing,Arunachal Pradesh,Nature,"['Adventure', 'Heritage', 'Nature']","['March', 'April', 'May', 'October', 'November']",93,1.0,1000.0,"(9.2719, 85.8017)",0.0,0.0,0,4,5,5,2,0,0,0,Not Available
+Bhalukpong,Arunachal Pradesh,Nature,"['Adventure', 'Water Sports', 'Relaxation']","['March', 'April', 'May', 'October', 'November']",94,1.0,1000.0,"(29.2339, 94.0881)",0.0,0.0,0,4,4,5,2,0,0,0,Not Available
+Anini,Arunachal Pradesh,Nature,"['Adventure', 'Nature', 'Photography']","['March', 'April', 'May', 'October', 'November']",95,1.0,1000.0,"(26.6769, 78.9931)",0.0,0.0,0,3,5,5,1,0,0,0,Not Available
+Gorichen Peak,Arunachal Pradesh,Mountain,"['Adventure', 'Trekking', 'Nature']","['March', 'April', 'May', 'September', 'October']",96,1.0,1000.0,"(23.5257, 82.5516)",0.0,0.0,0,5,5,5,2,0,0,0,Not Available
+Talle Valley,Arunachal Pradesh,Nature,"['Adventure', 'Trekking', 'Nature']","['March', 'April', 'May', 'October', 'November']",97,1.0,1000.0,"(22.3821, 83.0787)",0.0,0.0,0,4,5,5,1,0,0,0,Not Available
+Pakhui Wildlife Sanctuary,Arunachal Pradesh,Wildlife,"['Nature', 'Adventure', 'Photography']","['October', 'November', 'December', 'January', 'February']",98,1.0,1000.0,"(21.3472, 73.5133)",0.0,0.0,0,5,2,5,0,3,0,0,Not Available
+Kaziranga National Park,Assam,Wildlife,"['Nature', 'Adventure', 'Photography']","['November', 'December', 'January', 'February', 'March']",99,1.0,1000.0,"(22.0519, 92.2756)",0.0,0.0,0,4,2,5,0,5,0,0,Not Available
+Majuli,Assam,Cultural,"['Heritage', 'Nature', 'Culture']","['October', 'November', 'December', 'January', 'February']",100,1.0,1000.0,"(22.9115, 81.1822)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Guwahati,Assam,Cultural,"['Spiritual', 'Culture', 'Heritage']","['October', 'November', 'December', 'January', 'February']",101,1.0,1000.0,"(16.0898, 79.181)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Manas National Park,Assam,Wildlife,"['Nature', 'Adventure', 'Photography']","['November', 'December', 'January', 'February']",102,1.0,1000.0,"(33.2952, 75.6784)",0.0,0.0,0,5,4,5,0,3,0,0,Not Available
+Haflong,Assam,Hill Station,"['Nature', 'Relaxation', 'Adventure']","['October', 'November', 'December', 'January', 'February']",103,1.0,1000.0,"(25.4351, 68.5786)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Sivasagar,Assam,Cultural,"['Heritage', 'Spiritual', 'History']","['October', 'November', 'December', 'January', 'February']",104,1.0,1000.0,"(21.5498, 84.2382)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Tezpur,Assam,Cultural,"['Nature', 'Heritage', 'Culture']","['October', 'November', 'December', 'January', 'February']",105,1.0,1000.0,"(17.6667, 74.5179)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Jorhat,Assam,Cultural,"['Tea Gardens', 'Heritage', 'Nature']","['October', 'November', 'December', 'January', 'February']",106,1.0,1000.0,"(28.4067, 82.853)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Dibrugarh,Assam,Cultural,"['Tea Gardens', 'Relaxation', 'Nature']","['October', 'November', 'December', 'January', 'February']",107,1.0,1000.0,"(16.5251, 74.8185)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Dipor Bil,Assam,Nature,"['Wildlife', 'Photography', 'Relaxation']","['November', 'December', 'January', 'February', 'March']",108,1.0,1000.0,"(19.171, 84.8959)",0.0,0.0,0,4,5,5,1,0,0,0,Not Available
+Gangtok,Sikkim,Hill Station,"['Nature', 'Adventure', 'Culture']","['March', 'April', 'May', 'October', 'November']",109,1.0,1000.0,"(35.3312, 69.1868)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Nathula Pass,Sikkim,Mountain,"['Adventure', 'Nature']","['April', 'May', 'June', 'September', 'October']",110,1.0,1000.0,"(8.7442, 84.131)",0.0,0.0,0,5,3,5,3,0,0,0,Not Available
+Tsomgo Lake,Sikkim,Lake,"['Nature', 'Photography', 'Adventure']","['March', 'April', 'May', 'October', 'November']",111,1.0,1000.0,"(32.3398, 77.9024)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Pelling,Sikkim,Hill Station,"['Nature', 'Spiritual', 'Heritage']","['March', 'April', 'May', 'October', 'November']",112,1.0,1000.0,"(15.0084, 78.6049)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Yumthang Valley,Sikkim,Valley,"['Nature', 'Adventure', 'Relaxation']","['March', 'April', 'May', 'September', 'October']",113,1.0,1000.0,"(10.719, 95.9804)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Lachung,Sikkim,Mountain,"['Nature', 'Adventure', 'Photography']","['April', 'May', 'September', 'October']",114,1.0,1000.0,"(20.6167, 75.934)",0.0,0.0,0,5,3,5,3,0,0,0,Not Available
+Zuluk,Sikkim,Hill Station,"['Adventure', 'Nature', 'Photography']","['April', 'May', 'October', 'November']",115,1.0,1000.0,"(36.8857, 89.8703)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Ravangla,Sikkim,Hill Station,"['Spiritual', 'Nature', 'Relaxation']","['March', 'April', 'May', 'October', 'November']",116,1.0,1000.0,"(19.9215, 94.1843)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Bodh Gaya,Bihar,Spiritual,"['Heritage', 'Culture', 'Spiritual']","['October', 'November', 'December', 'January', 'February']",117,1.0,1000.0,"(25.6988, 96.1577)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Nalanda,Bihar,Heritage,"['Culture', 'History', 'Spiritual']","['October', 'November', 'December', 'January', 'February']",118,1.0,1000.0,"(17.1695, 90.4827)",0.0,0.0,5,0,0,0,4,0,0,0,Not Available
+Rajgir,Bihar,Hill Station,"['Nature', 'Heritage', 'Spiritual']","['October', 'November', 'December', 'January', 'February']",119,1.0,1000.0,"(9.7724, 78.4255)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Vaishali,Bihar,Heritage,"['History', 'Culture', 'Spiritual']","['October', 'November', 'December', 'January', 'February']",120,1.0,1000.0,"(10.258, 95.0825)",0.0,0.0,5,0,0,0,4,0,0,0,Not Available
+Vikramshila,Bihar,Heritage,"['History', 'Culture', 'Architecture']","['October', 'November', 'December', 'January', 'February']",121,1.0,1000.0,"(21.6522, 93.5565)",0.0,0.0,4,0,0,0,3,0,0,0,Not Available
+Chitrakoot Waterfalls,Chhattisgarh,Nature,"['Waterfalls', 'Adventure', 'Scenic']","['October', 'November', 'December', 'January', 'February']",122,1.0,1000.0,"(10.0207, 70.9251)",0.0,0.0,0,3,5,5,2,0,0,0,Not Available
+Barnawapara Wildlife Sanctuary,Chhattisgarh,Wildlife,"['Nature', 'Adventure', 'Wildlife']","['November', 'December', 'January', 'February']",123,1.0,1000.0,"(19.0801, 79.6044)",0.0,0.0,0,4,4,5,0,4,0,0,Not Available
+Bhoramdeo Temple,Chhattisgarh,Heritage,"['Culture', 'History', 'Architecture']","['October', 'November', 'December', 'January', 'February']",124,1.0,1000.0,"(32.4803, 89.0268)",0.0,0.0,4,0,0,0,3,0,0,0,Not Available
+Kanger Valley National Park,Chhattisgarh,Nature,"['Wildlife', 'Caves', 'Adventure']","['October', 'November', 'December', 'January', 'February']",125,1.0,1000.0,"(34.7418, 90.5884)",0.0,0.0,0,3,4,5,1,0,0,0,Not Available
+Dandak Caves,Chhattisgarh,Adventure,"['Caves', 'Nature', 'Exploration']","['October', 'November', 'December', 'January', 'February']",126,1.0,1000.0,"(34.5937, 82.6797)",0.0,0.0,0,5,2,4,0,3,0,0,Not Available
+Baga Beach,Goa,Beach,"['Nightlife', 'Water Sports', 'Relaxation']","['November', 'December', 'January', 'February']",127,1.0,1000.0,"(13.174, 85.3152)",0.0,0.0,0,3,4,4,4,0,0,0,Not Available
+Dudhsagar Falls,Goa,Nature,"['Waterfalls', 'Adventure', 'Scenic']","['October', 'November', 'December', 'January', 'February']",128,1.0,1000.0,"(14.0588, 91.6964)",0.0,0.0,0,3,4,5,1,0,0,0,Not Available
+Old Goa Churches,Goa,Heritage,"['Culture', 'Architecture', 'History']","['November', 'December', 'January', 'February']",129,1.0,1000.0,"(23.8431, 89.2914)",0.0,0.0,4,0,0,0,4,0,0,0,Not Available
+Gir National Park,Gujarat,Wildlife,"['Nature', 'Adventure', 'Conservation']","['November', 'December', 'January', 'February', 'March']",130,1.0,1000.0,"(29.0474, 91.6692)",0.0,0.0,0,5,4,5,0,4,0,0,Not Available
+Rann of Kutch,Gujarat,Desert,"['Culture', 'Scenic', 'Festival']","['November', 'December', 'January', 'February']",131,1.0,1000.0,"(23.9667, 70.4178)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Somnath Temple,Gujarat,Heritage,"['Spiritual', 'Architecture', 'History']","['October', 'November', 'December', 'January', 'February']",132,1.0,1000.0,"(13.6444, 74.9895)",0.0,0.0,4,0,0,0,2,0,0,0,Not Available
+Sabarmati Ashram,Gujarat,Heritage,"['History', 'Culture', 'Spiritual']",['All Year'],133,1.0,1000.0,"(27.4398, 83.9892)",0.0,0.0,5,0,0,0,2,0,0,0,Not Available
+Saputara,Gujarat,Hill Station,"['Nature', 'Adventure', 'Relaxation']","['March', 'April', 'May', 'June', 'September', 'October']",134,1.0,1000.0,"(8.2277, 79.6549)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Dwarka,Gujarat,Heritage,"['Spiritual', 'Historical', 'Architecture']","['October', 'November', 'December', 'January', 'February']",135,1.0,1000.0,"(20.9439, 71.1616)",0.0,0.0,5,0,0,0,4,0,0,0,Not Available
+Statue of Unity,Gujarat,Monument,"['History', 'Architecture', 'Nature']","['November', 'December', 'January', 'February']",136,1.0,1000.0,"(19.7498, 78.9172)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Champaner-Pavagadh Archaeological Park,Gujarat,Heritage,"['Archaeology', 'Culture', 'History']","['October', 'November', 'December', 'January', 'February']",137,1.0,1000.0,"(36.1739, 94.3353)",0.0,0.0,5,0,0,0,4,0,0,0,Not Available
+Mandvi Beach,Gujarat,Beach,"['Relaxation', 'Scenic', 'Adventure']","['November', 'December', 'January', 'February']",138,1.0,1000.0,"(23.0038, 72.3956)",0.0,0.0,0,3,5,5,3,0,0,0,Not Available
+Lothal,Gujarat,Archaeological,"['History', 'Ancient Civilization', 'Education']","['November', 'December', 'January', 'February']",139,1.0,1000.0,"(34.645, 90.5112)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Kurukshetra,Haryana,Heritage,"['Spiritual', 'Historical', 'Cultural']","['October', 'November', 'December', 'January', 'February']",140,1.0,1000.0,"(27.76, 93.924)",0.0,0.0,5,0,0,0,4,0,0,0,Not Available
+Pinjore Gardens,Haryana,Heritage,"['Nature', 'Architecture', 'Relaxation']","['October', 'November', 'December', 'January', 'February']",141,1.0,1000.0,"(29.1739, 93.3041)",0.0,0.0,5,0,0,0,3,0,0,0,Not Available
+Sultanpur Bird Sanctuary,Haryana,Wildlife,"['Nature', 'Birdwatching', 'Photography']","['October', 'November', 'December', 'January', 'February']",142,1.0,1000.0,"(31.4039, 94.1576)",0.0,0.0,0,5,3,5,0,5,0,0,Not Available
+Damdama Lake,Haryana,Nature,"['Adventure', 'Relaxation', 'Water Sports']","['November', 'December', 'January', 'February']",143,1.0,1000.0,"(13.728, 78.2791)",0.0,0.0,0,4,4,5,1,0,0,0,Not Available
+Ranchi,Jharkhand,Nature,"['Adventure', 'Relaxation', 'Waterfalls']","['October', 'November', 'December', 'January', 'February']",144,1.0,1000.0,"(29.611, 82.9947)",0.0,0.0,0,4,4,5,1,0,0,0,Not Available
+Netarhat,Jharkhand,Mountain,"['Nature', 'Adventure', 'Peaceful']","['March', 'April', 'May', 'October', 'November']",145,1.0,1000.0,"(13.0034, 84.3857)",0.0,0.0,0,4,4,5,3,0,0,0,Not Available
+Hazaribagh,Jharkhand,Nature,"['Adventure', 'Wildlife', 'Relaxation']","['October', 'November', 'December', 'January']",146,1.0,1000.0,"(34.6189, 76.1609)",0.0,0.0,0,4,5,5,1,0,0,0,Not Available
+Jamshedpur,Jharkhand,Nature,"['Industrial', 'Peaceful', 'Culture']","['November', 'December', 'January', 'February']",147,1.0,1000.0,"(24.2039, 82.8624)",0.0,0.0,0,4,5,5,2,0,0,0,Not Available
+Sakleshpur,Karnataka,Mountain,"['Nature', 'Coffee', 'Adventure']","['October', 'November', 'December', 'January']",148,1.0,1000.0,"(9.521, 73.3513)",0.0,0.0,0,5,4,4,2,0,0,0,Not Available
+Coorg,Karnataka,Mountain,"['Nature', 'Adventure', 'Coffee', 'Relaxation']","['October', 'November', 'December', 'January', 'February']",149,1.0,1000.0,"(36.3912, 83.6554)",0.0,0.0,0,4,5,4,1,0,0,0,Not Available
+Chikmagalur,Karnataka,Mountain,"['Coffee', 'Adventure', 'Nature']","['October', 'November', 'December', 'January']",150,1.0,1000.0,"(12.4155, 91.0814)",0.0,0.0,0,5,5,4,2,0,0,0,Not Available
+Kabini,Karnataka,Wildlife,"['Safari', 'Nature', 'Photography']","['October', 'November', 'December', 'January']",151,1.0,1000.0,"(26.8352, 79.0746)",0.0,0.0,0,5,2,5,0,3,0,0,Not Available
+Mysore,Karnataka,Heritage,"['Culture', 'Historical', 'Family']","['October', 'November', 'December', 'January']",152,1.0,1000.0,"(36.4361, 87.651)",0.0,0.0,4,0,0,0,4,0,0,0,Not Available
+Gokarna,Karnataka,Beach,"['Nature', 'Relaxation', 'Spiritual']","['October', 'November', 'December', 'January']",153,1.0,1000.0,"(25.8058, 70.4734)",0.0,0.0,0,3,5,4,2,0,0,0,Not Available
+Badami,Karnataka,Heritage,"['Cultural', 'Historical', 'Adventure']","['October', 'November', 'December', 'January']",154,1.0,1000.0,"(14.8797, 75.2726)",0.0,0.0,4,0,0,0,3,0,0,0,Not Available
+Hampi,Karnataka,Heritage,"['Historical', 'Cultural', 'Photography']","['October', 'November', 'December', 'January']",155,1.0,1000.0,"(31.9435, 70.234)",0.0,0.0,4,0,0,0,4,0,0,0,Not Available
+Agumbe,Karnataka,Nature,"['Rainforest', 'Wildlife', 'Photography']","['October', 'November', 'December', 'January']",157,1.0,1000.0,"(14.0524, 74.7841)",0.0,0.0,0,4,4,5,2,0,0,0,Not Available
+Khajuraho,Madhya Pradesh,Heritage,"['Cultural', 'Historical', 'Art']","['October', 'November', 'December', 'January']",158,1.0,1000.0,"(27.3371, 76.2426)",0.0,0.0,4,0,0,0,3,0,0,0,Not Available
+Kanha National Park,Madhya Pradesh,Wildlife,"['Safari', 'Nature', 'Photography']","['October', 'November', 'December', 'January']",159,1.0,1000.0,"(29.0731, 74.8893)",0.0,0.0,0,4,3,5,0,5,0,0,Not Available
+Sanchi,Madhya Pradesh,Heritage,"['Cultural', 'Spiritual', 'Historical']","['October', 'November', 'December', 'January']",160,1.0,1000.0,"(20.0036, 83.8053)",0.0,0.0,5,0,0,0,3,0,0,0,Not Available
+Ujjain,Madhya Pradesh,Heritage,"['Spiritual', 'Cultural', 'Historical']","['October', 'November', 'December', 'January']",161,1.0,1000.0,"(24.729, 69.8345)",0.0,0.0,5,0,0,0,2,0,0,0,Not Available
+Pachmarhi,Madhya Pradesh,Mountain,"['Nature', 'Adventure', 'Relaxation']","['March', 'April', 'May', 'October', 'November']",162,1.0,1000.0,"(20.5042, 72.2151)",0.0,0.0,0,5,3,5,2,0,0,0,Not Available
+Orchha,Madhya Pradesh,Heritage,"['Historical', 'Cultural', 'Relaxation']","['October', 'November', 'December', 'January']",163,1.0,1000.0,"(30.588, 68.6842)",0.0,0.0,4,0,0,0,3,0,0,0,Not Available
+Mumbai,Maharashtra,Urban,"['Culture', 'Nightlife', 'Shopping', 'Entertainment']",['All Year'],164,1.0,1000.0,"(35.2263, 81.3275)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Pune,Maharashtra,Heritage,"['Cultural', 'Historical', 'Relaxation']","['October', 'November', 'December', 'January']",165,1.0,1000.0,"(16.1717, 69.1834)",0.0,0.0,4,0,0,0,2,0,0,0,Not Available
+Lonavala,Maharashtra,Mountain,"['Nature', 'Adventure', 'Peaceful']","['Monsoon', 'October', 'November']",166,1.0,1000.0,"(19.9473, 68.2442)",0.0,0.0,0,4,3,5,3,0,0,0,Not Available
+Alibaug,Maharashtra,Beach,"['Relaxation', 'Water Sports', 'Nature']","['October', 'November', 'December', 'January']",167,1.0,1000.0,"(33.1159, 91.3866)",0.0,0.0,0,3,5,4,4,0,0,0,Not Available
+Matheran,Maharashtra,Mountain,"['Nature', 'Relaxation', 'Adventure']","['October', 'November', 'December']",168,1.0,1000.0,"(23.2166, 83.6353)",0.0,0.0,0,5,3,5,1,0,0,0,Not Available
+Khandala,Maharashtra,Mountain,"['Nature', 'Adventure', 'Peaceful']","['Monsoon', 'October', 'November']",169,1.0,1000.0,"(34.7899, 85.4036)",0.0,0.0,0,5,5,4,3,0,0,0,Not Available
+Mahabaleshwar,Maharashtra,Mountain,"['Nature', 'Adventure', 'Relaxation']","['October', 'November', 'December', 'January']",170,1.0,1000.0,"(22.1675, 84.9531)",0.0,0.0,0,5,5,5,1,0,0,0,Not Available
+Ajanta and Ellora Caves,Maharashtra,Heritage,"['Historical', 'Cultural', 'Architecture']","['October', 'November', 'December', 'January']",171,1.0,1000.0,"(13.4723, 86.6486)",0.0,0.0,5,0,0,0,3,0,0,0,Not Available
+Alleppey,Kerala,Beach,"['Backwaters', 'Nature', 'Relaxation']","['October', 'November', 'December', 'January']",172,1.0,1000.0,"(21.7875, 69.7457)",0.0,0.0,0,5,5,5,2,0,0,0,Not Available
+Munnar,Kerala,Mountain,"['Nature', 'Adventure', 'Tea Gardens']","['October', 'November', 'December', 'January']",173,1.0,1000.0,"(19.8256, 81.6356)",0.0,0.0,0,5,4,4,2,0,0,0,Not Available
+Wayanad,Kerala,Nature,"['Wildlife', 'Adventure', 'Cultural']","['October', 'November', 'December', 'January']",174,1.0,1000.0,"(22.6005, 95.1685)",0.0,0.0,0,4,5,5,2,0,0,0,Not Available
+Kumarakom,Kerala,Nature,"['Backwaters', 'Fishing', 'Relaxation']","['October', 'November', 'December', 'January']",175,1.0,1000.0,"(20.4848, 87.6946)",0.0,0.0,0,3,5,5,2,0,0,0,Not Available
+Varkala,Kerala,Beach,"['Relaxation', 'Nature', 'Spiritual']","['October', 'November', 'December', 'January']",176,1.0,1000.0,"(24.0756, 96.0142)",0.0,0.0,0,4,4,4,5,0,0,0,Not Available
+Kochi,Kerala,Urban,"['Cultural', 'Historical', 'Shopping']",['All Year'],177,1.0,1000.0,"(28.3763, 86.2597)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Athirappilly,Kerala,Nature,"['Waterfalls', 'Adventure', 'Photography']","['October', 'November', 'December', 'January']",178,1.0,1000.0,"(10.2021, 94.6423)",0.0,0.0,0,3,4,5,2,0,0,0,Not Available
+Thekkady,Kerala,Wildlife,"['Nature', 'Safari', 'Adventure']","['October', 'November', 'December', 'January']",179,1.0,1000.0,"(26.8063, 81.2043)",0.0,0.0,0,4,4,5,0,3,0,0,Not Available
+Vypin Island,Kerala,Beach,"['Nature', 'Adventure', 'Peaceful']","['October', 'November', 'December', 'January']",180,1.0,1000.0,"(31.2885, 86.5283)",0.0,0.0,0,4,4,5,4,0,0,0,Not Available
+Nanda Devi,Kerala,Mountain,"['Nature', 'Adventure', 'Trekking']","['October', 'November', 'December', 'January']",181,1.0,1000.0,"(11.7382, 70.9596)",0.0,0.0,0,5,4,5,1,0,0,0,Not Available
+Imphal,Manipur,Cultural,['Nature'],"['March', 'April', 'May', 'October', 'November']",182,1.0,1000.0,"(32.0127, 94.6972)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Loktak Lake,Manipur,Nature,['Adventure'],"['October', 'November', 'December']",183,1.0,1000.0,"(14.502, 90.9535)",0.0,0.0,0,3,5,5,2,0,0,0,Not Available
+Kangla Fort,Manipur,Cultural,['Heritage'],"['October', 'November', 'December']",184,1.0,1000.0,"(34.1104, 70.082)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Keibul Lamjao National Park,Manipur,Wildlife,['Nature'],"['October', 'November', 'December']",185,1.0,1000.0,"(17.6409, 87.5505)",0.0,0.0,0,5,2,5,0,3,0,0,Not Available
+Moirang,Manipur,Cultural,['History'],"['October', 'November', 'December']",186,1.0,1000.0,"(26.0969, 85.6695)",0.0,0.0,5,0,0,0,0,5,0,0,Not Available
+Matai Waterfall,Manipur,Nature,['Adventure'],"['October', 'November', 'December']",187,1.0,1000.0,"(34.5868, 92.5818)",0.0,0.0,0,3,4,5,2,0,0,0,Not Available
+Sangai Festival,Manipur,Cultural,['Heritage'],"['November', 'December']",188,1.0,1000.0,"(32.4104, 96.6806)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Churachandpur,Manipur,Nature,['Adventure'],"['October', 'November', 'December']",189,1.0,1000.0,"(19.4684, 83.5568)",0.0,0.0,0,4,4,5,1,0,0,0,Not Available
+Shillong,Meghalaya,Nature,['Culture'],"['March', 'April', 'May', 'October', 'November']",190,1.0,1000.0,"(35.0842, 76.8583)",0.0,0.0,0,3,4,5,2,0,0,0,Not Available
+Cherrapunji,Meghalaya,Nature,['Adventure'],"['March', 'April', 'May', 'October', 'November']",191,1.0,1000.0,"(29.3907, 77.4867)",0.0,0.0,0,4,4,5,2,0,0,0,Not Available
+Mawlynnong Village,Meghalaya,Nature,['Eco-tourism'],"['October', 'November', 'December']",192,1.0,1000.0,"(13.1553, 76.5528)",0.0,0.0,0,3,4,5,1,0,0,0,Not Available
+Elephant Falls,Meghalaya,Nature,[],"['March', 'April', 'May', 'October', 'November']",193,1.0,1000.0,"(31.0482, 85.2816)",0.0,0.0,0,3,4,5,1,0,0,0,Not Available
+Living Root Bridges,Meghalaya,Nature,['Adventure'],"['March', 'April', 'May', 'October', 'November']",194,1.0,1000.0,"(22.7449, 80.0849)",0.0,0.0,0,3,4,5,2,0,0,0,Not Available
+Dawki,Meghalaya,Adventure,['Nature'],"['March', 'April', 'May', 'October', 'November']",195,1.0,1000.0,"(35.4958, 96.443)",0.0,0.0,0,5,2,4,0,4,0,0,Not Available
+Nongriat,Meghalaya,Adventure,['Nature'],"['March', 'April', 'May', 'October', 'November']",196,1.0,1000.0,"(33.5366, 88.8441)",0.0,0.0,0,5,2,4,0,4,0,0,Not Available
+Jowai,Meghalaya,Culture,['Nature'],"['March', 'April', 'May', 'October', 'November']",197,1.0,1000.0,"(30.9336, 75.8764)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Sohra,Meghalaya,Nature,['Adventure'],"['March', 'April', 'May', 'October', 'November']",198,1.0,1000.0,"(17.2536, 80.1524)",0.0,0.0,0,3,5,5,1,0,0,0,Not Available
+Aizawl,Mizoram,Cultural,['Nature'],"['October', 'November', 'December']",199,1.0,1000.0,"(36.7954, 92.8464)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Lengteng Wildlife Sanctuary,Mizoram,Nature,['Wildlife'],"['October', 'November', 'December']",200,1.0,1000.0,"(34.7187, 79.9691)",0.0,0.0,0,4,4,5,2,0,0,0,Not Available
+Champhai,Mizoram,Cultural,['Nature'],"['October', 'November', 'December']",201,1.0,1000.0,"(19.4483, 82.9886)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Phawngpui,Mizoram,Nature,['Adventure'],"['October', 'November', 'December']",202,1.0,1000.0,"(33.4325, 83.4694)",0.0,0.0,0,3,5,5,1,0,0,0,Not Available
+Reiek,Mizoram,Nature,['Trekking'],"['October', 'November', 'December']",203,1.0,1000.0,"(30.5372, 79.2498)",0.0,0.0,0,3,4,5,1,0,0,0,Not Available
+Tamdil Lake,Mizoram,Nature,[],"['October', 'November', 'December']",204,1.0,1000.0,"(9.4709, 74.6588)",0.0,0.0,0,4,5,5,1,0,0,0,Not Available
+Vantawng Waterfall,Mizoram,Nature,[],"['October', 'November', 'December']",205,1.0,1000.0,"(23.6841, 80.317)",0.0,0.0,0,4,5,5,2,0,0,0,Not Available
+Bungtlang,Mizoram,Nature,['Adventure'],"['October', 'November', 'December']",206,1.0,1000.0,"(8.2499, 89.3311)",0.0,0.0,0,3,5,5,1,0,0,0,Not Available
+Kohima,Nagaland,Cultural,['Heritage'],"['March', 'April', 'May', 'October', 'November']",207,1.0,1000.0,"(28.7387, 86.1195)",0.0,0.0,5,0,0,0,0,5,0,0,Not Available
+Dimapur,Nagaland,Cultural,['Heritage'],"['March', 'April', 'May', 'October', 'November']",208,1.0,1000.0,"(15.1281, 79.1638)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Dzukou Valley,Nagaland,Nature,['Adventure'],"['May', 'June', 'October', 'November']",209,1.0,1000.0,"(30.3726, 87.8181)",0.0,0.0,0,4,4,5,1,0,0,0,Not Available
+Wokha,Nagaland,Nature,['Culture'],"['March', 'April', 'May', 'October', 'November']",210,1.0,1000.0,"(35.2343, 83.5912)",0.0,0.0,0,4,5,5,2,0,0,0,Not Available
+Mon,Nagaland,Cultural,['Heritage'],"['March', 'April', 'May', 'October', 'November']",211,1.0,1000.0,"(25.9433, 90.8119)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Mokokchung,Nagaland,Cultural,['Nature'],"['March', 'April', 'May', 'October', 'November']",212,1.0,1000.0,"(36.7629, 79.7125)",0.0,0.0,5,0,0,0,0,5,0,0,Not Available
+Khonoma Village,Nagaland,Cultural,['Adventure'],"['March', 'April', 'May', 'October', 'November']",213,1.0,1000.0,"(32.9016, 93.1628)",0.0,0.0,5,0,0,0,0,5,0,0,Not Available
+Zunheboto,Nagaland,Nature,['Culture'],"['March', 'April', 'May', 'October', 'November']",214,1.0,1000.0,"(35.8838, 91.9591)",0.0,0.0,0,3,4,5,2,0,0,0,Not Available
+Bhubaneswar,Odisha,Cultural,['Heritage'],"['October', 'November', 'December']",215,1.0,1000.0,"(25.8814, 71.8177)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Puri,Odisha,Beach,['Cultural'],"['October', 'November', 'December']",216,1.0,1000.0,"(16.3577, 73.9925)",0.0,0.0,0,5,4,5,2,0,0,0,Not Available
+Konark,Odisha,Heritage,['Culture'],"['October', 'November', 'December']",217,1.0,1000.0,"(31.0068, 95.0144)",0.0,0.0,5,0,0,0,4,0,0,0,Not Available
+Chilika Lake,Odisha,Nature,['Wildlife'],"['October', 'November', 'December']",218,1.0,1000.0,"(8.6825, 75.8853)",0.0,0.0,0,4,4,5,1,0,0,0,Not Available
+Nandankanan Zoo,Odisha,Wildlife,['Nature'],"['October', 'November', 'December']",219,1.0,1000.0,"(36.408, 68.9321)",0.0,0.0,0,4,3,5,0,5,0,0,Not Available
+Cuttack,Odisha,Cultural,['Heritage'],"['October', 'November', 'December']",220,1.0,1000.0,"(22.7087, 70.1929)",0.0,0.0,5,0,0,0,0,5,0,0,Not Available
+Simlipal National Park,Odisha,Nature,['Wildlife'],"['October', 'November', 'December']",221,1.0,1000.0,"(15.765, 72.034)",0.0,0.0,0,3,4,5,2,0,0,0,Not Available
+Raghurajpur Village,Odisha,Cultural,['Art'],"['October', 'November', 'December']",222,1.0,1000.0,"(20.1714, 73.0373)",0.0,0.0,5,0,0,0,0,5,0,0,Not Available
+Mahendragiri,Odisha,Nature,['Trekking'],"['October', 'November', 'December']",223,1.0,1000.0,"(8.3972, 89.3992)",0.0,0.0,0,4,5,5,2,0,0,0,Not Available
+Gopalpur,Odisha,Beach,['Nature'],"['October', 'November', 'December']",224,1.0,1000.0,"(12.7703, 88.1978)",0.0,0.0,0,5,5,4,4,0,0,0,Not Available
+Amritsar,Punjab,Cultural,['Heritage'],"['October', 'November', 'December']",225,1.0,1000.0,"(30.6306, 88.2316)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Golden Temple,Punjab,Cultural,['Spiritual'],"['October', 'November', 'December']",226,1.0,1000.0,"(13.1373, 92.5787)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Jalandhar,Punjab,Cultural,['Heritage'],"['October', 'November', 'December']",227,1.0,1000.0,"(17.8884, 71.8565)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Ropar Wetland,Punjab,Nature,['Wildlife'],"['October', 'November', 'December']",228,1.0,1000.0,"(12.9839, 69.4598)",0.0,0.0,0,3,4,5,2,0,0,0,Not Available
+Patiala,Punjab,Cultural,['Heritage'],"['October', 'November', 'December']",229,1.0,1000.0,"(34.5332, 70.1637)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Kesar Singh Bedi Shrine,Punjab,Cultural,['Spiritual'],"['October', 'November', 'December']",230,1.0,1000.0,"(10.1584, 70.2708)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Anandpur Sahib,Punjab,Spiritual,['Cultural'],"['October', 'November', 'December']",231,1.0,1000.0,"(11.9385, 96.7448)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Chandigarh,Punjab,Nature,['Culture'],"['October', 'November', 'December']",232,1.0,1000.0,"(16.6525, 81.5462)",0.0,0.0,0,3,5,5,2,0,0,0,Not Available
+Harike Wetland,Punjab,Nature,['Wildlife'],"['October', 'November', 'December']",233,1.0,1000.0,"(24.3716, 82.29)",0.0,0.0,0,3,5,5,2,0,0,0,Not Available
+Mata Lal Devi Mandir,Punjab,Cultural,['Spiritual'],"['October', 'November', 'December']",234,1.0,1000.0,"(30.9356, 91.3952)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Chennai,Tamil Nadu,Cultural,['Heritage'],"['October', 'November', 'December']",235,1.0,1000.0,"(29.7285, 91.9814)",0.0,0.0,5,0,0,0,0,5,0,0,Not Available
+Madurai,Tamil Nadu,Heritage,['Cultural'],"['October', 'November', 'December']",236,1.0,1000.0,"(30.1855, 78.3837)",0.0,0.0,5,0,0,0,3,0,0,0,Not Available
+Ooty,Tamil Nadu,Mountain,['Nature'],"['March', 'April', 'May', 'October', 'November']",237,1.0,1000.0,"(9.4144, 92.8392)",0.0,0.0,0,5,4,5,1,0,0,0,Not Available
+Kanyakumari,Tamil Nadu,Beach,"['Heritage', 'Nature']","['October', 'November', 'December']",238,1.0,1000.0,"(24.4312, 71.1718)",0.0,0.0,0,3,4,4,3,0,0,0,Not Available
+Coimbatore,Tamil Nadu,Nature,['Adventure'],"['October', 'November', 'December']",239,1.0,1000.0,"(18.5928, 94.3102)",0.0,0.0,0,3,5,5,2,0,0,0,Not Available
+Rameswaram,Tamil Nadu,Cultural,"['Heritage', 'Spiritual']","['October', 'November', 'December']",240,1.0,1000.0,"(18.2729, 74.9055)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Tiruvannamalai,Tamil Nadu,Cultural,"['Spiritual', 'Nature']","['October', 'November', 'December']",241,1.0,1000.0,"(15.8761, 72.8093)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Mahabalipuram,Tamil Nadu,Heritage,['Cultural'],"['October', 'November', 'December']",242,1.0,1000.0,"(20.0972, 95.6028)",0.0,0.0,5,0,0,0,3,0,0,0,Not Available
+Trichy,Tamil Nadu,Heritage,['Cultural'],"['October', 'November', 'December']",243,1.0,1000.0,"(13.1028, 94.0197)",0.0,0.0,5,0,0,0,4,0,0,0,Not Available
+Pondicherry,Tamil Nadu,Beach,"['Heritage', 'Nature']","['October', 'November', 'December']",244,1.0,1000.0,"(18.3381, 71.3659)",0.0,0.0,0,5,5,5,5,0,0,0,Not Available
+Hyderabad,Telangana,Cultural,['Heritage'],"['October', 'November', 'December']",245,1.0,1000.0,"(25.8569, 90.5809)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Warangal,Telangana,Heritage,['Culture'],"['October', 'November', 'December']",246,1.0,1000.0,"(33.9048, 91.8524)",0.0,0.0,4,0,0,0,4,0,0,0,Not Available
+Khammam,Telangana,Nature,['Adventure'],"['October', 'November', 'December']",247,1.0,1000.0,"(34.5738, 74.6497)",0.0,0.0,0,4,4,5,2,0,0,0,Not Available
+Nalgonda,Telangana,Cultural,['Heritage'],"['October', 'November', 'December']",248,1.0,1000.0,"(24.0965, 72.9787)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Srisailam,Telangana,Cultural,['Spiritual'],"['October', 'November', 'December']",249,1.0,1000.0,"(10.3158, 79.1625)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Basara,Telangana,Cultural,['Spiritual'],"['October', 'November', 'December']",250,1.0,1000.0,"(36.6281, 90.0396)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Ramagundam,Telangana,Nature,['Adventure'],"['October', 'November', 'December']",251,1.0,1000.0,"(17.1622, 80.0584)",0.0,0.0,0,3,4,5,2,0,0,0,Not Available
+Agartala,Tripura,Cultural,['Heritage'],"['October', 'November', 'December']",252,1.0,1000.0,"(11.2691, 85.708)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Ujjayanta Palace,Tripura,Heritage,['Cultural'],"['October', 'November', 'December']",253,1.0,1000.0,"(12.7725, 95.5245)",0.0,0.0,5,0,0,0,4,0,0,0,Not Available
+Neermahal,Tripura,Heritage,['Cultural'],"['October', 'November', 'December']",254,1.0,1000.0,"(28.6676, 72.4774)",0.0,0.0,5,0,0,0,2,0,0,0,Not Available
+Sepahijala Wildlife Sanctuary,Tripura,Nature,['Wildlife'],"['October', 'November', 'December']",255,1.0,1000.0,"(9.6754, 94.3948)",0.0,0.0,0,3,4,5,2,0,0,0,Not Available
+Trishna Wildlife Sanctuary,Tripura,Nature,['Wildlife'],"['October', 'November', 'December']",256,1.0,1000.0,"(30.5252, 71.6941)",0.0,0.0,0,3,4,5,1,0,0,0,Not Available
+Rudrasagar Lake,Tripura,Nature,[],"['October', 'November', 'December']",257,1.0,1000.0,"(14.4043, 73.7318)",0.0,0.0,0,4,4,5,1,0,0,0,Not Available
+Pilak,Tripura,Cultural,['Heritage'],"['October', 'November', 'December']",258,1.0,1000.0,"(22.344, 92.5601)",0.0,0.0,5,0,0,0,0,5,0,0,Not Available
+Agra,Uttar Pradesh,Heritage,['Cultural'],"['October', 'November', 'December']",259,1.0,1000.0,"(35.3856, 78.8308)",0.0,0.0,5,0,0,0,4,0,0,0,Not Available
+Varanasi,Uttar Pradesh,Heritage,"['Spiritual', 'Cultural']","['October', 'November', 'December']",260,1.0,1000.0,"(10.2325, 80.9571)",0.0,0.0,5,0,0,0,3,0,0,0,Not Available
+Lucknow,Uttar Pradesh,Cultural,['Heritage'],"['October', 'November', 'December']",261,1.0,1000.0,"(18.9097, 84.1758)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Mathura,Uttar Pradesh,Heritage,"['Cultural', 'Spiritual']","['October', 'November', 'December']",262,1.0,1000.0,"(16.4719, 75.671)",0.0,0.0,4,0,0,0,3,0,0,0,Not Available
+Ayodhya,Uttar Pradesh,Heritage,['Spiritual'],"['October', 'November', 'December']",263,1.0,1000.0,"(17.5793, 68.6156)",0.0,0.0,5,0,0,0,4,0,0,0,Not Available
+Kushinagar,Uttar Pradesh,Heritage,['Spiritual'],"['October', 'November', 'December']",264,1.0,1000.0,"(11.6353, 92.7678)",0.0,0.0,5,0,0,0,3,0,0,0,Not Available
+Aligarh,Uttar Pradesh,Cultural,['Heritage'],"['October', 'November', 'December']",265,1.0,1000.0,"(14.1056, 91.0046)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Sarnath,Uttar Pradesh,Heritage,['Spiritual'],"['October', 'November', 'December']",266,1.0,1000.0,"(15.3615, 93.388)",0.0,0.0,5,0,0,0,2,0,0,0,Not Available
+Nainital,Uttarakhand,Mountain,['Nature'],"['March', 'April', 'May', 'October', 'November']",267,1.0,1000.0,"(12.3405, 88.7401)",0.0,0.0,0,4,4,4,2,0,0,0,Not Available
+Mussoorie,Uttarakhand,Mountain,['Nature'],"['March', 'April', 'May', 'October', 'November']",268,1.0,1000.0,"(21.0549, 73.5948)",0.0,0.0,0,4,5,4,2,0,0,0,Not Available
+Rishikesh,Uttarakhand,Adventure,['Spiritual'],"['March', 'April', 'May', 'October', 'November']",269,1.0,1000.0,"(15.2119, 85.9684)",0.0,0.0,0,5,2,5,0,4,0,0,Not Available
+Haridwar,Uttarakhand,Spiritual,['Heritage'],"['October', 'November', 'December']",270,1.0,1000.0,"(17.0737, 82.5554)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Jim Corbett National Park,Uttarakhand,Wildlife,['Nature'],"['October', 'November', 'December']",271,1.0,1000.0,"(23.5593, 76.2612)",0.0,0.0,0,5,2,5,0,4,0,0,Not Available
+Dehradun,Uttarakhand,Nature,['Adventure'],"['March', 'April', 'May', 'October', 'November']",273,1.0,1000.0,"(9.5124, 84.3583)",0.0,0.0,0,4,4,5,2,0,0,0,Not Available
+Kedarnath,Uttarakhand,Spiritual,['Cultural'],"['May', 'June', 'September', 'October']",274,1.0,1000.0,"(32.8352, 72.0245)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Badrinath,Uttarakhand,Spiritual,['Heritage'],"['May', 'June', 'September', 'October']",275,1.0,1000.0,"(36.0353, 93.1152)",0.0,0.0,0,0,0,0,0,0,0,0,Not Available
+Kolkata,West Bengal,Cultural,['Heritage'],"['October', 'November', 'December']",276,1.0,1000.0,"(25.4069, 93.2384)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Darjeeling,West Bengal,Mountain,['Nature'],"['March', 'April', 'May', 'October', 'November']",277,1.0,1000.0,"(14.8684, 84.1462)",0.0,0.0,0,5,4,4,1,0,0,0,Not Available
+Sundarbans,West Bengal,Wildlife,['Nature'],"['October', 'November', 'December']",278,1.0,1000.0,"(10.2882, 71.4418)",0.0,0.0,0,5,4,5,0,4,0,0,Not Available
+Kalimpong,West Bengal,Mountain,['Nature'],"['March', 'April', 'May', 'October', 'November']",279,1.0,1000.0,"(28.8298, 74.6313)",0.0,0.0,0,4,5,5,2,0,0,0,Not Available
+Jalpaiguri,West Bengal,Nature,['Adventure'],"['October', 'November', 'December']",280,1.0,1000.0,"(13.5784, 84.0845)",0.0,0.0,0,3,4,5,2,0,0,0,Not Available
+Shantiniketan,West Bengal,Cultural,['Heritage'],"['October', 'November', 'December']",281,1.0,1000.0,"(31.7657, 90.124)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Digha,West Bengal,Beach,['Nature'],"['October', 'November', 'December']",282,1.0,1000.0,"(29.183, 75.0812)",0.0,0.0,0,5,5,5,3,0,0,0,Not Available
+Raichak,West Bengal,Cultural,['Heritage'],"['October', 'November', 'December']",283,1.0,1000.0,"(19.6148, 82.0083)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Bandel,West Bengal,Cultural,['Heritage'],"['October', 'November', 'December']",284,1.0,1000.0,"(36.9257, 96.4664)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Port Blair,Andaman and Nicobar Islands,Beach,['Nature'],"['October', 'November', 'December']",285,1.0,1000.0,"(10.2377, 94.5057)",0.0,0.0,0,3,5,5,3,0,0,0,Not Available
+Havelock Island,Andaman and Nicobar Islands,Beach,"['Adventure', 'Nature']","['October', 'November', 'December']",286,1.0,1000.0,"(14.6017, 88.0)",0.0,0.0,0,4,5,4,2,0,0,0,Not Available
+Neil Island,Andaman and Nicobar Islands,Beach,"['Nature', 'Adventure']","['October', 'November', 'December']",287,1.0,1000.0,"(9.4703, 77.4235)",0.0,0.0,0,4,5,4,3,0,0,0,Not Available
+Baratang Island,Andaman and Nicobar Islands,Nature,['Adventure'],"['October', 'November', 'December']",288,1.0,1000.0,"(11.3241, 78.0764)",0.0,0.0,0,4,4,5,2,0,0,0,Not Available
+Radhanagar Beach,Andaman and Nicobar Islands,Beach,['Nature'],"['October', 'November', 'December']",289,1.0,1000.0,"(28.0398, 70.7753)",0.0,0.0,0,3,4,4,2,0,0,0,Not Available
+North Bay Island,Andaman and Nicobar Islands,Beach,['Adventure'],"['October', 'November', 'December']",290,1.0,1000.0,"(24.9752, 92.7235)",0.0,0.0,0,3,4,4,5,0,0,0,Not Available
+Sukhna Lake,Chandigarh,Nature,['Adventure'],"['October', 'November', 'December']",291,1.0,1000.0,"(28.4413, 77.6276)",0.0,0.0,0,3,4,5,2,0,0,0,Not Available
+Rock Garden of Chandigarh,Chandigarh,Cultural,['Heritage'],"['October', 'November', 'December']",292,1.0,1000.0,"(23.265, 79.631)",0.0,0.0,5,0,0,0,0,5,0,0,Not Available
+Zakir Hussain Rose Garden,Chandigarh,Nature,[],"['October', 'November', 'December']",293,1.0,1000.0,"(22.1068, 80.1009)",0.0,0.0,0,4,4,5,2,0,0,0,Not Available
+Chandigarh Haat,Chandigarh,Cultural,['Shopping'],"['October', 'November', 'December']",294,1.0,1000.0,"(24.2518, 69.3686)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Elante Mall,Chandigarh,Cultural,['Shopping'],"['October', 'November', 'December']",295,1.0,1000.0,"(35.147, 92.0638)",0.0,0.0,5,0,0,0,0,3,0,0,Not Available
+Daman Beach,Daman and Diu,Beach,['Nature'],"['October', 'November', 'December']",296,1.0,1000.0,"(15.3164, 81.7327)",0.0,0.0,0,3,4,4,2,0,0,0,Not Available
+Nagoa Beach,Daman and Diu,Beach,['Nature'],"['October', 'November', 'December']",297,1.0,1000.0,"(17.1745, 93.9634)",0.0,0.0,0,3,4,4,4,0,0,0,Not Available
+Fort of St. Jerome,Daman and Diu,Heritage,['Cultural'],"['October', 'November', 'December']",298,1.0,1000.0,"(9.8951, 87.6326)",0.0,0.0,5,0,0,0,3,0,0,0,Not Available
+Jampore Beach,Daman and Diu,Beach,['Nature'],"['October', 'November', 'December']",299,1.0,1000.0,"(30.0037, 87.7013)",0.0,0.0,0,3,4,4,5,0,0,0,Not Available
+Moti Daman Fort,Daman and Diu,Heritage,['Cultural'],"['October', 'November', 'December']",300,1.0,1000.0,"(10.7642, 77.8269)",0.0,0.0,4,0,0,0,2,0,0,0,Not Available
+Agatti Island,Lakshadweep,Beach,"['Nature', 'Adventure']","['October', 'November', 'December']",301,1.0,1000.0,"(33.484, 85.9835)",0.0,0.0,0,5,5,4,2,0,0,0,Not Available
+Kavaratti Island,Lakshadweep,Beach,['Nature'],"['October', 'November', 'December']",302,1.0,1000.0,"(21.1277, 89.8345)",0.0,0.0,0,5,4,4,5,0,0,0,Not Available
+Kalapathar Beach,Lakshadweep,Beach,['Nature'],"['October', 'November', 'December']",303,1.0,1000.0,"(15.8734, 79.4355)",0.0,0.0,0,4,4,4,2,0,0,0,Not Available
+Bangaram Island,Lakshadweep,Beach,"['Nature', 'Adventure']","['October', 'November', 'December']",304,1.0,1000.0,"(17.0646, 75.5225)",0.0,0.0,0,3,4,5,4,0,0,0,Not Available
+Minicoy Island,Lakshadweep,Beach,"['Nature', 'Adventure']","['October', 'November', 'December']",305,1.0,1000.0,"(10.32, 79.9318)",0.0,0.0,0,5,4,4,3,0,0,0,Not Available
+Red Fort,Delhi,Heritage,['Cultural'],"['October', 'November', 'December']",306,1.0,1000.0,"(33.1116, 95.6361)",0.0,0.0,4,0,0,0,2,0,0,0,Not Available
+Qutub Minar,Delhi,Heritage,['Cultural'],"['October', 'November', 'December']",307,1.0,1000.0,"(17.3055, 92.9373)",0.0,0.0,4,0,0,0,4,0,0,0,Not Available
+India Gate,Delhi,Heritage,['Cultural'],"['October', 'November', 'December']",308,1.0,1000.0,"(15.3315, 94.9355)",0.0,0.0,4,0,0,0,2,0,0,0,Not Available
+Humayun's Tomb,Delhi,Heritage,['Cultural'],"['October', 'November', 'December']",309,1.0,1000.0,"(30.442, 84.1084)",0.0,0.0,5,0,0,0,4,0,0,0,Not Available
+Lotus Temple,Delhi,Cultural,['Spiritual'],"['October', 'November', 'December']",310,1.0,1000.0,"(31.8489, 89.8288)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Jama Masjid,Delhi,Heritage,['Cultural'],"['October', 'November', 'December']",311,1.0,1000.0,"(13.1717, 80.8051)",0.0,0.0,4,0,0,0,4,0,0,0,Not Available
+Akshardham Temple,Delhi,Cultural,['Spiritual'],"['October', 'November', 'December']",312,1.0,1000.0,"(12.3467, 78.1314)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Promenade Beach,Puducherry,Beach,['Nature'],"['October', 'November', 'December']",313,1.0,1000.0,"(8.6626, 93.7263)",0.0,0.0,0,5,5,4,4,0,0,0,Not Available
+Sri Aurobindo Ashram,Puducherry,Cultural,['Spiritual'],"['October', 'November', 'December']",314,1.0,1000.0,"(33.4299, 82.9179)",0.0,0.0,5,0,0,0,0,5,0,0,Not Available
+Auroville,Puducherry,Cultural,['Spiritual'],"['October', 'November', 'December']",315,1.0,1000.0,"(17.4124, 83.6403)",0.0,0.0,5,0,0,0,0,4,0,0,Not Available
+Arikamedu,Puducherry,Heritage,['Cultural'],"['October', 'November', 'December']",316,1.0,1000.0,"(31.6656, 86.4713)",0.0,0.0,4,0,0,0,4,0,0,0,Not Available
+Serenity Beach,Puducherry,Beach,['Nature'],"['October', 'November', 'December']",317,1.0,1000.0,"(20.2716, 94.0511)",0.0,0.0,0,3,5,5,4,0,0,0,Not Available
+Nubra Valley,Ladakh,Mountain,"['Adventure', 'Nature']","['May', 'June', 'July', 'August']",319,1.0,1000.0,"(35.439, 74.8648)",0.0,0.0,0,4,3,4,3,0,0,0,Not Available
+Pangong Lake,Ladakh,Nature,['Adventure'],"['May', 'June', 'July', 'August']",320,1.0,1000.0,"(17.2663, 69.4159)",0.0,0.0,0,4,5,5,1,0,0,0,Not Available
+Tso Moriri Lake,Ladakh,Nature,['Adventure'],"['May', 'June', 'July', 'August']",321,1.0,1000.0,"(16.4259, 83.5027)",0.0,0.0,0,3,5,5,2,0,0,0,Not Available
+Khardung La,Ladakh,Mountain,['Adventure'],"['May', 'June', 'July', 'August']",323,1.0,1000.0,"(36.6396, 88.6953)",0.0,0.0,0,5,5,5,2,0,0,0,Not Available
