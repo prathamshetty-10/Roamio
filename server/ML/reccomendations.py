@@ -334,7 +334,7 @@ class TravelRecommendationSystem:
 def main():
     print("Loading destination database...")
     df = pd.read_csv(
-        r"C:\Users\Shashank\OneDrive - Manipal Academy of Higher Education\Desktop\Codes\Projects\Roamio\Final\india_destinations_cleaned.csv")
+        r"Roamio\server\Ml\india_destinations_cleaned.csv")
     
     rec_system = TravelRecommendationSystem(df)
     preferences = rec_system.get_user_preferences()
