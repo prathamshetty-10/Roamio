@@ -7,6 +7,7 @@ import tensorflow.keras as keras
 from tensorflow.keras import layers, Model
 from datetime import datetime
 
+
 class TravelRecommendationSystem:
     def __init__(self, destinations_df):
         self.df = destinations_df.copy()
@@ -21,11 +22,69 @@ class TravelRecommendationSystem:
         ]
         self.scaler = StandardScaler()
         self.initialize_models()
-        
+
         # Define state neighbors with approximate travel costs and travel time
         self.state_neighbors = {
+            'andhra pradesh': {
+                'karnataka': {'cost': 2500, 'time': 12},
+                'tamil nadu': {'cost': 2500, 'time': 12},
+                'telangana': {'cost': 2000, 'time': 8},
+                'odisha': {'cost': 3000, 'time': 14},
+                'chhattisgarh': {'cost': 3500, 'time': 16}
+            },
+            'arunachal pradesh': {
+                'assam': {'cost': 3000, 'time': 12},
+                'nagaland': {'cost': 3500, 'time': 14}
+            },
+            'assam': {
+                'arunachal pradesh': {'cost': 3000, 'time': 12},
+                'nagaland': {'cost': 2000, 'time': 8},
+                'manipur': {'cost': 2500, 'time': 10},
+                'meghalaya': {'cost': 1500, 'time': 6},
+                'tripura': {'cost': 3000, 'time': 12},
+                'mizoram': {'cost': 3500, 'time': 14},
+                'west bengal': {'cost': 4000, 'time': 16}
+            },
+            'bihar': {
+                'jharkhand': {'cost': 2000, 'time': 8},
+                'west bengal': {'cost': 2500, 'time': 10},
+                'uttar pradesh': {'cost': 3000, 'time': 12}
+            },
+            'chhattisgarh': {
+                'andhra pradesh': {'cost': 3500, 'time': 16},
+                'odisha': {'cost': 2000, 'time': 8},
+                'jharkhand': {'cost': 2500, 'time': 10},
+                'madhya pradesh': {'cost': 3000, 'time': 12},
+                'maharashtra': {'cost': 4000, 'time': 16}
+            },
+            'goa': {
+                'karnataka': {'cost': 1500, 'time': 6},
+                'maharashtra': {'cost': 2000, 'time': 8}
+            },
+            'gujarat': {
+                'rajasthan': {'cost': 3000, 'time': 12},
+                'maharashtra': {'cost': 2500, 'time': 10},
+                'madhya pradesh': {'cost': 4000, 'time': 16}
+            },
+            'haryana': {
+                'punjab': {'cost': 2000, 'time': 8},
+                'rajasthan': {'cost': 2500, 'time': 10},
+                'uttar pradesh': {'cost': 3000, 'time': 12},
+                'delhi': {'cost': 1000, 'time': 4}
+            },
+            'himachal pradesh': {
+                'punjab': {'cost': 1500, 'time': 6},
+                'uttarakhand': {'cost': 2000, 'time': 8},
+                'jammu and kashmir': {'cost': 3000, 'time': 12}
+            },
+            'jharkhand': {
+                'bihar': {'cost': 2000, 'time': 8},
+                'odisha': {'cost': 2500, 'time': 10},
+                'chhattisgarh': {'cost': 3000, 'time': 12},
+                'west bengal': {'cost': 3500, 'time': 14}
+            },
             'karnataka': {
-                'kerala': {'cost': 2000, 'time': 8},  # hours by train/bus
+                'kerala': {'cost': 2000, 'time': 8},
                 'tamil nadu': {'cost': 2000, 'time': 8},
                 'andhra pradesh': {'cost': 2500, 'time': 12},
                 'telangana': {'cost': 2500, 'time': 14},
@@ -36,13 +95,121 @@ class TravelRecommendationSystem:
                 'karnataka': {'cost': 2000, 'time': 8},
                 'tamil nadu': {'cost': 1500, 'time': 6}
             },
+            'madhya pradesh': {
+                'rajasthan': {'cost': 2500, 'time': 10},
+                'uttar pradesh': {'cost': 3000, 'time': 12},
+                'chhattisgarh': {'cost': 3000, 'time': 12},
+                'maharashtra': {'cost': 3500, 'time': 14},
+                'gujarat': {'cost': 4000, 'time': 16}
+            },
+            'maharashtra': {
+                'goa': {'cost': 2000, 'time': 8},
+                'karnataka': {'cost': 3000, 'time': 16},
+                'madhya pradesh': {'cost': 3500, 'time': 14},
+                'gujarat': {'cost': 2500, 'time': 10},
+                'chhattisgarh': {'cost': 4000, 'time': 16}
+            },
+            'manipur': {
+                'assam': {'cost': 2500, 'time': 10},
+                'mizoram': {'cost': 3000, 'time': 12},
+                'nagaland': {'cost': 2000, 'time': 8}
+            },
+            'meghalaya': {
+                'assam': {'cost': 1500, 'time': 6}
+            },
+            'mizoram': {
+                'assam': {'cost': 3500, 'time': 14},
+                'manipur': {'cost': 3000, 'time': 12},
+                'tripura': {'cost': 2500, 'time': 10}
+            },
+            'nagaland': {
+                'assam': {'cost': 2000, 'time': 8},
+                'arunachal pradesh': {'cost': 3500, 'time': 14},
+                'manipur': {'cost': 2000, 'time': 8}
+            },
+            'odisha': {
+                'chhattisgarh': {'cost': 2000, 'time': 8},
+                'jharkhand': {'cost': 2500, 'time': 10},
+                'west bengal': {'cost': 3000, 'time': 12},
+                'andhra pradesh': {'cost': 3000, 'time': 14}
+            },
+            'punjab': {
+                'haryana': {'cost': 2000, 'time': 8},
+                'himachal pradesh': {'cost': 1500, 'time': 6},
+                'jammu and kashmir': {'cost': 3000, 'time': 12}
+            },
+            'rajasthan': {
+                'haryana': {'cost': 2500, 'time': 10},
+                'uttar pradesh': {'cost': 3000, 'time': 12},
+                'madhya pradesh': {'cost': 2500, 'time': 10},
+                'gujarat': {'cost': 3000, 'time': 12}
+            },
+            'sikkim': {
+                'west bengal': {'cost': 2500, 'time': 10}
+            },
             'tamil nadu': {
                 'karnataka': {'cost': 2000, 'time': 8},
                 'kerala': {'cost': 1500, 'time': 6},
                 'andhra pradesh': {'cost': 2500, 'time': 12}
+            },
+            'telangana': {
+                'andhra pradesh': {'cost': 2000, 'time': 8},
+                'karnataka': {'cost': 2500, 'time': 14},
+                'maharashtra': {'cost': 3000, 'time': 12}
+            },
+            'tripura': {
+                'assam': {'cost': 3000, 'time': 12},
+                'mizoram': {'cost': 2500, 'time': 10}
+            },
+            'uttar pradesh': {
+                'rajasthan': {'cost': 3000, 'time': 12},
+                'madhya pradesh': {'cost': 3000, 'time': 12},
+                'bihar': {'cost': 3000, 'time': 12},
+                'uttarakhand': {'cost': 1500, 'time': 6},
+                'haryana': {'cost': 3000, 'time': 12}
+            },
+            'uttarakhand': {
+                'uttar pradesh': {'cost': 1500, 'time': 6},
+                'himachal pradesh': {'cost': 2000, 'time': 8}
+            },
+            'west bengal': {
+                'bihar': {'cost': 2500, 'time': 10},
+                'jharkhand': {'cost': 3500, 'time': 14},
+                'odisha': {'cost': 3000, 'time': 12},
+                'sikkim': {'cost': 2500, 'time': 10},
+                'assam': {'cost': 4000, 'time': 16}
+            },
+            # Union Territories
+            'andaman and nicobar islands': {
+                'tamil nadu': {'cost': 6000, 'time': 48}  # by ferry or flight
+            },
+            'chandigarh': {
+                'punjab': {'cost': 1000, 'time': 4},
+                'haryana': {'cost': 1000, 'time': 4}
+            },
+            'daman and diu': {
+                'gujarat': {'cost': 1500, 'time': 6},
+                'maharashtra': {'cost': 2000, 'time': 8}
+            },
+            'delhi': {
+                'haryana': {'cost': 1000, 'time': 4},
+                'uttar pradesh': {'cost': 1500, 'time': 6}
+            },
+            'jammu and kashmir': {
+                'punjab': {'cost': 3000, 'time': 12},
+                'himachal pradesh': {'cost': 3000, 'time': 12}
+            },
+            'ladakh': {
+                'jammu and kashmir': {'cost': 4000, 'time': 16}
+            },
+            'lakshadweep': {
+                'kerala': {'cost': 5000, 'time': 24}  # by ferry or flight
+            },
+            'puducherry': {
+                'tamil nadu': {'cost': 1000, 'time': 4}
             }
-            # Add more states as needed
         }
+
         self.month_to_season = {
             1: 'winter',   # January
             2: 'winter',   # February
@@ -66,7 +233,7 @@ class TravelRecommendationSystem:
         }
 
         # Previous seasonal_recommendations and month_to_season code remains the same
-        
+
         # Define region diversity groups
         self.region_groups = {
             'south': ['karnataka', 'kerala', 'tamil nadu', 'andhra pradesh', 'telangana'],
@@ -75,6 +242,7 @@ class TravelRecommendationSystem:
             'central': ['madhya pradesh', 'chhattisgarh'],
             'east': ['west bengal', 'odisha', 'bihar', 'jharkhand']
         }
+
     def initialize_models(self):
         """Initialize machine learning models or other components."""
         self.kmeans = KMeans(n_clusters=5, random_state=42)
@@ -82,23 +250,26 @@ class TravelRecommendationSystem:
         x = layers.Dense(64, activation='relu')(input_layer)
         x = layers.Dense(32, activation='relu')(x)
         output_layer = layers.Dense(5, activation='softmax')(x)
-        self.recommendation_model = Model(inputs=input_layer, outputs=output_layer)
-        self.recommendation_model.compile(optimizer='adam', loss='categorical_crossentropy')
+        self.recommendation_model = Model(
+            inputs=input_layer, outputs=output_layer)
+        self.recommendation_model.compile(
+            optimizer='adam', loss='categorical_crossentropy')
         print("Models initialized successfully.")
 
     def calculate_travel_cost(self, user_state, destination_state):
         """Calculate approximate travel cost between states"""
         user_state = user_state.lower()
         destination_state = destination_state.lower()
-        
+
         if user_state == destination_state:
-            return {'cost': 1000, 'time': 4}  # Base cost and time for intra-state travel
-        
+            # Base cost and time for intra-state travel
+            return {'cost': 1000, 'time': 4}
+
         # Get cost from state_neighbors if available
         state_costs = self.state_neighbors.get(user_state, {})
         if destination_state in state_costs:
             return state_costs[destination_state]
-        
+
         # Default values for distant states
         return {'cost': 5000, 'time': 24}
 
@@ -186,35 +357,38 @@ class TravelRecommendationSystem:
         """Filter destinations based on comprehensive criteria"""
         filtered_df = self.df.copy()
         user_location = preferences['location']
-        
+
         # Calculate total costs including travel
         travel_costs = []
         travel_times = []
         for _, row in filtered_df.iterrows():
-            travel_info = self.calculate_travel_cost(user_location['state'], row['state'])
+            travel_info = self.calculate_travel_cost(
+                user_location['state'], row['state'])
             travel_costs.append(travel_info['cost'])
             travel_times.append(travel_info['time'])
-        
+
         filtered_df['travel_cost'] = travel_costs
         filtered_df['travel_time'] = travel_times
-        
+
         # Calculate actual daily budget available after travel costs
         filtered_df['available_daily_budget'] = (
             preferences['total_budget'] - filtered_df['travel_cost']
         ) / preferences['num_days']
-        
+
         # Filter by available budget with some flexibility
         filtered_df = filtered_df[
-            filtered_df['avg_daily_cost'] <= (filtered_df['available_daily_budget'] * 1.1)
+            filtered_df['avg_daily_cost'] <= (
+                filtered_df['available_daily_budget'] * 1.1)
         ]
-        
+
         # Season-based filtering with flexibility
         current_season = self.month_to_season[preferences['travel_month']]
         seasonal_states = self.seasonal_recommendations[current_season]
         filtered_df['season_score'] = filtered_df['state'].apply(
-            lambda x: 1.0 if x.lower() in seasonal_states else 0.7  # Less strict seasonal penalty
+            # Less strict seasonal penalty
+            lambda x: 1.0 if x.lower() in seasonal_states else 0.7
         )
-        
+
         # Calculate location scores with more flexibility
         location_scores = []
         for idx, row in filtered_df.iterrows():
@@ -225,72 +399,81 @@ class TravelRecommendationSystem:
             else:
                 score = 0.6  # Increased score for distant states
             location_scores.append(score)
-        
+
         filtered_df['location_score'] = location_scores
-        
+
         # Add region information
-        filtered_df['region'] = filtered_df['state'].apply(self.get_region_for_state)
-        
+        filtered_df['region'] = filtered_df['state'].apply(
+            self.get_region_for_state)
+
         return filtered_df
 
     def get_initial_recommendations(self, preferences, n_recommendations=5):
         """Get initial recommendations with diversity"""
         filtered_df = self.filter_destinations(preferences)
-        
+
         if len(filtered_df) < n_recommendations:
-            print("\nNote: Few destinations match your exact criteria. Showing best possible matches...")
+            print(
+                "\nNote: Few destinations match your exact criteria. Showing best possible matches...")
             return filtered_df
-        
+
         # Remove previously recommended destinations
-        filtered_df = filtered_df[~filtered_df['name'].isin(self.previously_recommended)]
-        
+        filtered_df = filtered_df[~filtered_df['name'].isin(
+            self.previously_recommended)]
+
         if len(filtered_df) == 0:
             print("\nNote: Showing new set of recommendations...")
             self.previously_recommended.clear()
             filtered_df = self.filter_destinations(preferences)
-        
+
         # Convert preferences to feature vector
-        pref_dict = {col: preferences.get(col, 3) for col in self.feature_columns}
-        pref_vector = np.array([[pref_dict[col] for col in self.feature_columns]])
-        
+        pref_dict = {col: preferences.get(col, 3)
+                     for col in self.feature_columns}
+        pref_vector = np.array([[pref_dict[col]
+                               for col in self.feature_columns]])
+
         # Scale features
         scaled_preferences = self.scaler.fit_transform(pref_vector)
-        scaled_features = self.scaler.transform(filtered_df[self.feature_columns])
-        
+        scaled_features = self.scaler.transform(
+            filtered_df[self.feature_columns])
+
         # Calculate similarity scores
-        similarities = cosine_similarity(scaled_preferences, scaled_features)[0]
-        
+        similarities = cosine_similarity(
+            scaled_preferences, scaled_features)[0]
+
         # Adjust similarities based on multiple factors
         adjusted_similarities = (
-            similarities * 
-            filtered_df['location_score'].values * 
-            filtered_df['season_score'].values * 
-            (1 - filtered_df['avg_daily_cost'] / filtered_df['available_daily_budget'].values)
+            similarities *
+            filtered_df['location_score'].values *
+            filtered_df['season_score'].values *
+            (1 - filtered_df['avg_daily_cost'] /
+             filtered_df['available_daily_budget'].values)
         )
-        
+
         recommendations = []
         regions_used = set()
-        
+
         while len(recommendations) < n_recommendations and len(filtered_df) > 0:
             # Get top recommendation
             idx = np.argmax(adjusted_similarities)
             recommended_place = filtered_df.iloc[idx]
-            
+
             # Check if we already have 2 places from this region
-            region_count = sum(1 for r in recommendations if r['region'] == recommended_place['region'])
-            
+            region_count = sum(
+                1 for r in recommendations if r['region'] == recommended_place['region'])
+
             if region_count < 2:  # Allow maximum 2 places from same region
                 recommendations.append(recommended_place)
                 regions_used.add(recommended_place['region'])
                 self.previously_recommended.add(recommended_place['name'])
-            
+
             # Remove this place from consideration
             filtered_df = filtered_df.drop(filtered_df.index[idx])
             adjusted_similarities = np.delete(adjusted_similarities, idx)
-            
+
             if len(adjusted_similarities) == 0:
                 break
-        
+
         return pd.DataFrame(recommendations)
 
     # ... [Rest of the code including print_recommendations remains the same]
@@ -331,22 +514,26 @@ class TravelRecommendationSystem:
                 print(f"Features: {row['features']}")
             print("-" * 50)
 
+
 def main():
     print("Loading destination database...")
     df = pd.read_csv(
-        r"Roamio\server\Ml\india_destinations_cleaned.csv")
-    
+        r"C:\Users\Shashank\OneDrive - Manipal Academy of Higher Education\Desktop\Codes\Projects\Roam.io\Final\india_destinations_cleaned.csv")
+
     rec_system = TravelRecommendationSystem(df)
     preferences = rec_system.get_user_preferences()
     recommendations = rec_system.get_initial_recommendations(preferences)
     rec_system.print_recommendations(recommendations, preferences)
-    
+
     while True:
-        more = input("\nWould you like to see more recommendations? (yes/no): ").lower()
+        more = input(
+            "\nWould you like to see more recommendations? (yes/no): ").lower()
         if more != 'yes':
             break
-        recommendations = rec_system.get_initial_recommendations(preferences, n_recommendations=5)
+        recommendations = rec_system.get_initial_recommendations(
+            preferences, n_recommendations=5)
         rec_system.print_recommendations(recommendations, preferences)
+
 
 if __name__ == "__main__":
     main()
