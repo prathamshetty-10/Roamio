@@ -1,13 +1,20 @@
-
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
-from sklearn.cluster import KMeans
 from sklearn.metrics.pairwise import cosine_similarity
 import tensorflow.keras as keras
 from tensorflow.keras import layers, Model
 from datetime import datetime
 
+
+from sklearn.cluster import KMeans
+
+
+
+app = Flask(__name__)
+CORS(app)
 
 class TravelRecommendationSystem:
     def __init__(self, destinations_df):
@@ -239,19 +246,17 @@ class TravelRecommendationSystem:
             'east': ['west bengal', 'odisha', 'bihar', 'jharkhand']
         }
 
+        # [Previous dictionary definitions copied from your code]
+
     def initialize_models(self):
-        """Initialize machine learning models or other components."""
+        """Initialize machine learning models."""
         self.kmeans = KMeans(n_clusters=5, random_state=42)
         input_layer = layers.Input(shape=(len(self.feature_columns),))
         x = layers.Dense(64, activation='relu')(input_layer)
         x = layers.Dense(32, activation='relu')(x)
         output_layer = layers.Dense(5, activation='softmax')(x)
-        self.recommendation_model = Model(
-            inputs=input_layer, outputs=output_layer)
-        self.recommendation_model.compile(
-            optimizer='adam', loss='categorical_crossentropy')
-        print("Models initialized successfully.")
-
+        self.recommendation_model = Model(inputs=input_layer, outputs=output_layer)
+        self.recommendation_model.compile(optimizer='adam', loss='categorical_crossentropy')
     def calculate_travel_cost(self, user_state, destination_state):
         """Calculate approximate travel cost between states"""
         user_state = user_state.lower()
@@ -268,81 +273,6 @@ class TravelRecommendationSystem:
 
         # Default values for distant states
         return {'cost': 5000, 'time': 24}
-
-    def get_user_details(self):
-        """Get comprehensive user travel details including previously visited places"""
-        print("\n=== Travel Details ===")
-
-        # Location
-        print("\n=== Location Information ===")
-        city = input("Enter your current city: ").lower()
-        state = input("Enter your current state: ").lower()
-
-        # Previously visited places
-        print("\n=== Previous Recommendations ===")
-        previously_recommended = set()
-        while True:
-            place = input("Enter a previously recommended place (or press Enter to finish): ").strip()
-            if not place:
-                break
-            previously_recommended.add(place.lower())
-
-        # Budget and duration
-        while True:
-            try:
-                total_budget = float(input("\nEnter your total budget (in ₹): "))
-                num_days = int(input("Enter number of days you want to travel: "))
-                if total_budget <= 0 or num_days <= 0:
-                    print("Please enter valid positive numbers.")
-                    continue
-                break
-            except ValueError:
-                print("Please enter valid numbers.")
-
-        # Travel month
-        while True:
-            try:
-                travel_month = int(input("\nEnter the month you want to travel (1-12): "))
-                if 1 <= travel_month <= 12:
-                    break
-                print("Please enter a valid month (1-12).")
-            except ValueError:
-                print("Please enter a valid month number.")
-
-        # Calculate daily budget after travel costs
-        daily_budget = total_budget / num_days
-
-        return {
-            'location': {'city': city, 'state': state},
-            'total_budget': total_budget,
-            'num_days': num_days,
-            'daily_budget': daily_budget,
-            'travel_month': travel_month,
-            'previously_recommended': previously_recommended
-        }
-
-    def get_user_preferences(self):
-        """Collect user preferences through interactive input"""
-        print("\n=== Travel Preference Questionnaire ===")
-        preferences = self.get_user_details()
-
-        # Travel style preferences
-        print("\nRate your interest in the following (1-5, where 5 is highest):")
-        preferences['adventure_score'] = int(input("Adventure activities: "))
-        preferences['relaxation_score'] = int(input("Relaxation and peace: "))
-        preferences['cultural_significance'] = int(input("Cultural experiences: "))
-        preferences['nature_score'] = int(input("Nature and outdoors: "))
-        preferences['nightlife_score'] = int(input("Nightlife and entertainment: "))
-
-        # Additional preferences
-        print("\nHow important are these factors? (1-5, where 5 is highest):")
-        preferences['accessibility_score'] = int(input("Easy accessibility: "))
-        preferences['crowd_level'] = int(input("Crowd levels (5 for busy, 1 for peaceful): "))
-        preferences['family_friendly'] = int(input("Family-friendly amenities: "))
-        preferences['food_scene'] = int(input("Food and dining options: "))
-        preferences['shopping_score'] = int(input("Shopping opportunities: "))
-
-        return preferences
     def get_region_for_state(self, state):
         """Get the region group for a given state"""
         state = state.lower()
@@ -469,54 +399,97 @@ class TravelRecommendationSystem:
                 break
 
         return pd.DataFrame(recommendations)
+    def process_frontend_data(self, data):
+        """Convert frontend JSON data to the format needed by the recommendation system."""
+        return {
+            'location': {
+                'city': data['currentCity'].lower(),
+                'state': data['currentState'].lower()
+            },
+            'total_budget': float(data['budget']),
+            'num_days': int(data['days']),
+            'daily_budget': float(data['budget']) / int(data['days']),
+            'travel_month': int(data['travelMonth']),
+            'previously_recommended': set(data['previous']) if data['previous'][0] != "none" else set(),
+            'adventure_score': int(data['interests']['adventure']),
+            'relaxation_score': int(data['interests']['relaxation']),
+            'cultural_significance': int(data['interests']['culture']),
+            'nature_score': int(data['interests']['nature']),
+            'nightlife_score': int(data['interests']['nightlife']),
+            'accessibility_score': int(data['importance']['accessibility']),
+            'crowd_level': int(data['importance']['crowd']),
+            'family_friendly': int(data['importance']['familyFriendly']),
+            'food_scene': int(data['importance']['food']),
+            'shopping_score': int(data['importance']['shopping'])
+        }
 
-    def print_recommendations(self, recommendations, preferences):
-        """Print recommendations with detailed information"""
-        user_location = preferences['location']
-        print(
-            f"\n=== Recommended Destinations from {user_location['city'].title()}, {user_location['state'].title()} ===")
-        print(
-            f"Budget: ₹{preferences['total_budget']:.2f} for {preferences['num_days']} days")
-        print(
-            f"Travel Month: {datetime.strptime(str(preferences['travel_month']), '%m').strftime('%B')}")
-
-        for idx, row in recommendations.iterrows():
-            print(f"\n{row['name']}, {row['state'].title()}")
-            print(f"Type: {row['type']}")
-            print(f"Best Season: {row['best_season']}")
-
-            # Budget breakdown
+    def format_recommendations(self, recommendations, preferences):
+        """Format recommendations as JSON for frontend."""
+        result = []
+        for _, row in recommendations.iterrows():
             travel_cost = row['travel_cost']
             daily_cost = row['avg_daily_cost']
             total_cost = travel_cost + (daily_cost * preferences['num_days'])
+            
+            recommendation = {
+                'name': row['name'],
+                'state': row['state'].title(),
+                'type': row['type'],
+                'bestSeason': row['best_season'],
+                'costs': {
+                    'travel': float(travel_cost),
+                    'daily': float(daily_cost),
+                    'total': float(total_cost)
+                },
+                'location': {
+                    'type': 'Same state' if row['location_score'] == 1.0 else 
+                           'Neighboring state' if row['location_score'] == 0.8 else 
+                           'Other region'
+                },
+                'features': row['features'] if 'features' in row.index and pd.notna(row['features']) else None
+            }
+            result.append(recommendation)
+        return result
 
-            print(f"Cost Breakdown:")
-            print(f"- Travel Cost: ₹{travel_cost:.2f}")
-            print(f"- Daily Expenses: ₹{daily_cost:.2f}")
-            print(f"- Total Estimated Cost: ₹{total_cost:.2f}")
+# Initialize the recommendation system
+df = pd.read_csv("india_destinations_cleaned.csv")
+rec_system = TravelRecommendationSystem(df)
 
-            if row['location_score'] == 1.0:
-                location_type = "Same state"
-            elif row['location_score'] == 0.7:
-                location_type = "Neighboring state"
-            else:
-                location_type = "Other region"
-            print(f"Location: {location_type}")
+@app.route('/api/recommendations', methods=['POST'])
+def get_recommendations():
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({
+                'status': 'error',
+                'message': 'No JSON data received'
+            }), 400
+            
+        preferences = rec_system.process_frontend_data(data)
+        recommendations = rec_system.get_initial_recommendations(preferences)
+        formatted_recommendations = rec_system.format_recommendations(recommendations, preferences)
+        
+        if not formatted_recommendations:
+            return jsonify({
+                'status': 'error',
+                'message': 'No recommendations found matching criteria'
+            }), 404
+            
+        return jsonify({
+            'status': 'success',
+            'recommendations': formatted_recommendations
+        })
+    
+    except ValueError as ve:
+        return jsonify({
+            'status': 'error',
+            'message': f'Invalid input data: {str(ve)}'
+        }), 400
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': f'Server error: {str(e)}'
+        }), 500
 
-            if 'features' in row.index and pd.notna(row['features']):
-                print(f"Features: {row['features']}")
-            print("-" * 50)
-
-
-def main():
-    print("Loading destination database...")
-    df = pd.read_csv(r"Roamio\server\Ml\india_destinations_cleaned.csv")
-
-    rec_system = TravelRecommendationSystem(df)
-    preferences = rec_system.get_user_preferences()
-    recommendations = rec_system.get_initial_recommendations(preferences)
-    rec_system.print_recommendations(recommendations, preferences)
-
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)

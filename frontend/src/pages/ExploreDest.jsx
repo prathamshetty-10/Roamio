@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IoArrowBackSharp } from "react-icons/io5";
+import { reccRoute } from '../utils/APIRoutes.js';
+import { toast } from "react-hot-toast";
 import Navbar from "../components/navbar.jsx";
+import axios from "axios";
 
 const indianStates = [
   "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
@@ -18,12 +21,13 @@ const monthNames = [
 
 export default function ExploreDest() {
   const navigate = useNavigate();
+  const [previous_recc, setPrev] = useState(["none"]);
   const [formData, setFormData] = useState({
     currentCity: '',
     currentState: '',
     budget: '',
     days: '',
-    travelMonth: '',
+    travelMonth: 0,
     interests: {
       adventure: 0,
       relaxation: 0,
@@ -38,11 +42,12 @@ export default function ExploreDest() {
       food: 0,
       shopping: 0,
     },
+    previous: previous_recc
   });
   const [stateSuggestions, setStateSuggestions] = useState([]);
   const [monthSuggestions, setMonthSuggestions] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false); // Add isLoading state
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -73,16 +78,30 @@ export default function ExploreDest() {
 
   const handleMonthSelect = (month) => {
     const monthIndex = monthNames.indexOf(month) + 1; // Months are 1-based (January = 1)
-    setFormData(prev => ({ ...prev, travelMonth: month }));
+    setFormData(prev => ({ ...prev, travelMonth: monthIndex }));
     setMonthSuggestions([]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Store the entered city and travel month in the appropriate formats
+    setIsLoading(true); // Set loading to true when the form is submitted
+
     const city = formData.currentCity.toLowerCase();
-    const month = monthNames.indexOf(formData.travelMonth) + 1; // Convert full month name to its number (1 for January, 2 for February, etc.)
-    console.log("Form Data Submitted:", { ...formData, currentCity: city, travelMonth: month });
+    formData.currentCity = city;
+
+    try {
+      const { data } = await axios.post(reccRoute, formData);
+      if (data.status === false) {
+        toast.error(data.msg);
+      }
+      if (data.status === true) {
+        toast.success("Successful");
+      }
+    } catch (error) {
+      toast.error("Error while fetching recommendations");
+    } finally {
+      setIsLoading(false); // Set loading to false after the API call is completed
+    }
   };
 
   const renderStars = (category, key) => {
@@ -146,6 +165,7 @@ export default function ExploreDest() {
                 )}
               </div>
 
+              {/* Other form inputs */}
               <div>
                 <label className="block text-gray-700 text-lg font-semibold mb-2">Current City</label>
                 <input
@@ -229,9 +249,10 @@ export default function ExploreDest() {
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white px-6 py-3 rounded-full font-bold text-lg hover:bg-blue-700 mt-6"
+                className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg mt-4"
+                disabled={isLoading} // Disable button when loading
               >
-                Submit
+                {isLoading ? "Loading..." : "Submit"}
               </button>
             </form>
           </div>

@@ -1,4 +1,5 @@
 const host="http://localhost:5001";
+const host2="http://localhost:5000";
 const registerRoute=`${host}/api/auth/register`;
 const loginRoute=`${host}/api/auth/login`;
 const profileRoute=`${host}/api/auth/profile`;
@@ -21,6 +22,7 @@ const deleteSingleRoute=`${host}/api/trip/deleteSingle`;
 const deleteAllRoute=`${host}/api/trip/deleteAll`;
 const downloadAllRoute=`${host}/api/trip/downloadAll`;
 const downloadOneRoute=`${host}/api/trip/downloadOne`;
+const reccRoute=`${host2}/api/recommendations`;
 export {registerRoute,loginRoute,profileRoute,getFriendsRoute,searchFriendsRoute,getRequestsRoute,sendRequestsRoute,acceptRequestsRoute,
     rejectRequestsRoute,removeFriendsRoute,getTripsRoute,addTripsRoute,removeTripsRoute,leaveTripsRoute,editMembersRoute,editTripsRoute,
-uploadPhotosRoute,getPhotosRoute,deleteAllRoute,deleteSingleRoute,downloadAllRoute,downloadOneRoute}
+uploadPhotosRoute,getPhotosRoute,deleteAllRoute,deleteSingleRoute,downloadAllRoute,downloadOneRoute,reccRoute}
