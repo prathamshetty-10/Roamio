@@ -1,3 +1,4 @@
+
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
@@ -11,9 +12,6 @@ from datetime import datetime
 class TravelRecommendationSystem:
     def __init__(self, destinations_df):
         self.df = destinations_df.copy()
-        self.previously_recommended = set()  # Track previous recommendations
-        # ... [Previous __init__ code remains the same until state_neighbors]
-        self.df = destinations_df.copy()
         self.feature_columns = [
             'budget_category', 'accessibility_score', 'crowd_level',
             'cultural_significance', 'adventure_score', 'relaxation_score',
@@ -22,8 +20,6 @@ class TravelRecommendationSystem:
         ]
         self.scaler = StandardScaler()
         self.initialize_models()
-
-        # Define state neighbors with approximate travel costs and travel time
         self.state_neighbors = {
             'andhra pradesh': {
                 'karnataka': {'cost': 2500, 'time': 12},
@@ -274,7 +270,7 @@ class TravelRecommendationSystem:
         return {'cost': 5000, 'time': 24}
 
     def get_user_details(self):
-        """Get comprehensive user travel details"""
+        """Get comprehensive user travel details including previously visited places"""
         print("\n=== Travel Details ===")
 
         # Location
@@ -282,13 +278,20 @@ class TravelRecommendationSystem:
         city = input("Enter your current city: ").lower()
         state = input("Enter your current state: ").lower()
 
+        # Previously visited places
+        print("\n=== Previous Recommendations ===")
+        previously_recommended = set()
+        while True:
+            place = input("Enter a previously recommended place (or press Enter to finish): ").strip()
+            if not place:
+                break
+            previously_recommended.add(place.lower())
+
         # Budget and duration
         while True:
             try:
-                total_budget = float(
-                    input("\nEnter your total budget (in ₹): "))
-                num_days = int(
-                    input("Enter number of days you want to travel: "))
+                total_budget = float(input("\nEnter your total budget (in ₹): "))
+                num_days = int(input("Enter number of days you want to travel: "))
                 if total_budget <= 0 or num_days <= 0:
                     print("Please enter valid positive numbers.")
                     continue
@@ -299,8 +302,7 @@ class TravelRecommendationSystem:
         # Travel month
         while True:
             try:
-                travel_month = int(
-                    input("\nEnter the month you want to travel (1-12): "))
+                travel_month = int(input("\nEnter the month you want to travel (1-12): "))
                 if 1 <= travel_month <= 12:
                     break
                 print("Please enter a valid month (1-12).")
@@ -315,7 +317,8 @@ class TravelRecommendationSystem:
             'total_budget': total_budget,
             'num_days': num_days,
             'daily_budget': daily_budget,
-            'travel_month': travel_month
+            'travel_month': travel_month,
+            'previously_recommended': previously_recommended
         }
 
     def get_user_preferences(self):
@@ -327,24 +330,19 @@ class TravelRecommendationSystem:
         print("\nRate your interest in the following (1-5, where 5 is highest):")
         preferences['adventure_score'] = int(input("Adventure activities: "))
         preferences['relaxation_score'] = int(input("Relaxation and peace: "))
-        preferences['cultural_significance'] = int(
-            input("Cultural experiences: "))
+        preferences['cultural_significance'] = int(input("Cultural experiences: "))
         preferences['nature_score'] = int(input("Nature and outdoors: "))
-        preferences['nightlife_score'] = int(
-            input("Nightlife and entertainment: "))
+        preferences['nightlife_score'] = int(input("Nightlife and entertainment: "))
 
         # Additional preferences
         print("\nHow important are these factors? (1-5, where 5 is highest):")
         preferences['accessibility_score'] = int(input("Easy accessibility: "))
-        preferences['crowd_level'] = int(
-            input("Crowd levels (5 for busy, 1 for peaceful): "))
-        preferences['family_friendly'] = int(
-            input("Family-friendly amenities: "))
+        preferences['crowd_level'] = int(input("Crowd levels (5 for busy, 1 for peaceful): "))
+        preferences['family_friendly'] = int(input("Family-friendly amenities: "))
         preferences['food_scene'] = int(input("Food and dining options: "))
         preferences['shopping_score'] = int(input("Shopping opportunities: "))
 
         return preferences
-
     def get_region_for_state(self, state):
         """Get the region group for a given state"""
         state = state.lower()
@@ -411,22 +409,19 @@ class TravelRecommendationSystem:
     def get_initial_recommendations(self, preferences, n_recommendations=5):
         """Get initial recommendations with diversity"""
         filtered_df = self.filter_destinations(preferences)
+        previously_recommended = preferences.get('previously_recommended', set())
 
         if len(filtered_df) < n_recommendations:
-            print(
-                "\nNote: Few destinations match your exact criteria. Showing best possible matches...")
+            print("\nNote: Few destinations match your exact criteria. Showing best possible matches...")
             return filtered_df
-
         # Remove previously recommended destinations
-        filtered_df = filtered_df[~filtered_df['name'].isin(
-            self.previously_recommended)]
+        filtered_df = filtered_df[~filtered_df['name'].str.lower().isin([name.lower() for name in previously_recommended])]
+
 
         if len(filtered_df) == 0:
             print("\nNote: Showing new set of recommendations...")
-            self.previously_recommended.clear()
             filtered_df = self.filter_destinations(preferences)
 
-        # Convert preferences to feature vector
         pref_dict = {col: preferences.get(col, 3)
                      for col in self.feature_columns}
         pref_vector = np.array([[pref_dict[col]
@@ -465,7 +460,6 @@ class TravelRecommendationSystem:
             if region_count < 2:  # Allow maximum 2 places from same region
                 recommendations.append(recommended_place)
                 regions_used.add(recommended_place['region'])
-                self.previously_recommended.add(recommended_place['name'])
 
             # Remove this place from consideration
             filtered_df = filtered_df.drop(filtered_df.index[idx])
@@ -476,7 +470,6 @@ class TravelRecommendationSystem:
 
         return pd.DataFrame(recommendations)
 
-    # ... [Rest of the code including print_recommendations remains the same]
     def print_recommendations(self, recommendations, preferences):
         """Print recommendations with detailed information"""
         user_location = preferences['location']
@@ -517,22 +510,12 @@ class TravelRecommendationSystem:
 
 def main():
     print("Loading destination database...")
-    df = pd.read_csv(
-        r"C:\Users\Shashank\OneDrive - Manipal Academy of Higher Education\Desktop\Codes\Projects\Roam.io\Final\india_destinations_cleaned.csv")
+    df = pd.read_csv(r"Roamio\server\Ml\india_destinations_cleaned.csv")
 
     rec_system = TravelRecommendationSystem(df)
     preferences = rec_system.get_user_preferences()
     recommendations = rec_system.get_initial_recommendations(preferences)
     rec_system.print_recommendations(recommendations, preferences)
-
-    while True:
-        more = input(
-            "\nWould you like to see more recommendations? (yes/no): ").lower()
-        if more != 'yes':
-            break
-        recommendations = rec_system.get_initial_recommendations(
-            preferences, n_recommendations=5)
-        rec_system.print_recommendations(recommendations, preferences)
 
 
 if __name__ == "__main__":
