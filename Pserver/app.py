@@ -410,7 +410,7 @@ class TravelRecommendationSystem:
             'num_days': int(data['days']),
             'daily_budget': float(data['budget']) / int(data['days']),
             'travel_month': int(data['travelMonth']),
-            'previously_recommended': set(data['previous']) if data['previous'][0] != "none" else set(),
+            'previously_recommended': set(data['previous']),
             'adventure_score': int(data['interests']['adventure']),
             'relaxation_score': int(data['interests']['relaxation']),
             'cultural_significance': int(data['interests']['culture']),
@@ -471,23 +471,23 @@ def get_recommendations():
         
         if not formatted_recommendations:
             return jsonify({
-                'status': 'error',
+                'status': 'false',
                 'message': 'No recommendations found matching criteria'
             }), 404
             
         return jsonify({
-            'status': 'success',
+            'status': 'true',
             'recommendations': formatted_recommendations
         })
     
     except ValueError as ve:
         return jsonify({
-            'status': 'error',
+            'status': 'false',
             'message': f'Invalid input data: {str(ve)}'
         }), 400
     except Exception as e:
         return jsonify({
-            'status': 'error',
+            'status': 'false',
             'message': f'Server error: {str(e)}'
         }), 500
 

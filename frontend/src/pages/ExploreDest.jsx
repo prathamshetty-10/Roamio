@@ -46,8 +46,9 @@ export default function ExploreDest() {
   });
   const [stateSuggestions, setStateSuggestions] = useState([]);
   const [monthSuggestions, setMonthSuggestions] = useState([]);
-  const [isLoading, setIsLoading] = useState(false); // Add isLoading state
-  
+  const [isLoading, setIsLoading] = useState(false);
+  const [recommendations, setRecommendations] = useState([]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -77,30 +78,37 @@ export default function ExploreDest() {
   };
 
   const handleMonthSelect = (month) => {
-    const monthIndex = monthNames.indexOf(month) + 1; // Months are 1-based (January = 1)
+    const monthIndex = monthNames.indexOf(month) + 1;
     setFormData(prev => ({ ...prev, travelMonth: monthIndex }));
     setMonthSuggestions([]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true); // Set loading to true when the form is submitted
+    setIsLoading(true);
 
     const city = formData.currentCity.toLowerCase();
     formData.currentCity = city;
+    formData.previous = previous_recc;
 
     try {
-      const { data } = await axios.post(reccRoute, formData);
-      if (data.status === false) {
-        toast.error(data.msg);
+      const response = await axios.post(reccRoute, formData);
+      if (!response.data.status) {
+        toast.error(response.data.msg);
       }
-      if (data.status === true) {
+      if (response.data.status) {
         toast.success("Successful");
+        setRecommendations(response.data.recommendations);
+
+      
+
+        // Navigate to /recc page with the recommendations state
+        navigate('/recc', { state: { recommendations: response.data.recommendations,pref:formData} });
       }
     } catch (error) {
       toast.error("Error while fetching recommendations");
     } finally {
-      setIsLoading(false); // Set loading to false after the API call is completed
+      setIsLoading(false);
     }
   };
 
@@ -250,7 +258,7 @@ export default function ExploreDest() {
               <button
                 type="submit"
                 className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg mt-4"
-                disabled={isLoading} // Disable button when loading
+                disabled={isLoading}
               >
                 {isLoading ? "Loading..." : "Submit"}
               </button>
