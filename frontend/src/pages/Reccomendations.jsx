@@ -91,7 +91,7 @@ export default function Recommendations() {
               <p className="mt-2"><strong> Total Cost:</strong> ₹{recc.costs.total}</p>
 
               {/* Add Trip Button */}
-              <button className="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+              <button className="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700" onClick={()=>navigate('/addTripR',{state:{loc:recc.name,recommendations:recommendations,pref:preferences}})}>
                 Add Trip
               </button>
             </div>

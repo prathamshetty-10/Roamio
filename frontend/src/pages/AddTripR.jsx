@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,useLocation, useLinkClickHandler} from "react-router-dom";
 import Navbar from "../components/navbar.jsx";
 import axios from "axios";
-import { addTripsRoute, getFriendsRoute } from "../utils/APIRoutes.js";
+import { addTripsRoute} from "../utils/APIRoutes.js";
 import toast from "react-hot-toast";
 
-export default function AddTrip() {
+export default function AddTripR() {
   const navigate = useNavigate();
+const location=useLocation();
+ const recc=location.state.recommendations;
+ const pref=location.state.pref;
+ const loc=location.state.loc;
   const [Me, SetMe] = useState({});
   const [tripData, setTripData] = useState({
     tripName: "",
@@ -14,11 +18,11 @@ export default function AddTrip() {
     members: [],
     description: "",
     budget: "",
-    location: "",
+    location: loc,
     avatar: "",
   });
   const [previewImage, setPreviewImage] = useState("");
-  const [friends, setFriends] = useState([]);
+  
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -97,7 +101,7 @@ export default function AddTrip() {
         <div className="w-full max-w-[800px]">
           <button
             className="bg-blue-600 text-white px-4 py-2 rounded-full flex items-center gap-2 font-bold text-lg hover:bg-blue-700 mb-6"
-            onClick={() => navigate('/trips')}
+            onClick={() => navigate('/recc',{state:{recommendations:recc,pref:pref}})}
           >
             Back
           </button>
@@ -217,6 +221,3 @@ export default function AddTrip() {
     </div>
   );
 }
-
-
-  

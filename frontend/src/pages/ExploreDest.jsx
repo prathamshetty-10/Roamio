@@ -86,12 +86,29 @@ export default function ExploreDest() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    if(!formData.currentCity || !formData.currentState || !formData.budget ||formData.budget==0 || formData.days || formData.days<=0 || !formData.travelMonth || formData.travelMonth==0 || formData.interests.adventure==0 || formData.interests.relaxation==0 || formData.interests.culture==0 
-     || formData.interests.nature==0 || formData.interests.nightlife==0 || formData.importance.accessibility==0 || formData.importance.crowd==0 || formData.importance.familyFriendly==0 || formData.importance.food==0 ||formData.importance.shopping==0 ){
+    if (
+      !formData.currentCity || 
+      !formData.currentState || 
+      !formData.budget || parseInt(formData.budget, 10) <= 0 || 
+      !formData.days || parseInt(formData.days, 10) <= 0 || 
+      !formData.travelMonth || parseInt(formData.travelMonth, 10) <= 0 || 
+      !formData.interests.adventure || 
+      !formData.interests.relaxation || 
+      !formData.interests.culture || 
+      !formData.interests.nature || 
+      !formData.interests.nightlife || 
+      !formData.importance.accessibility || 
+      !formData.importance.crowd || 
+      !formData.importance.familyFriendly || 
+      !formData.importance.food || 
+      !formData.importance.shopping
+    ) {
+      console.log(formData);
       toast.error("Please fill all fields");
+      setIsLoading(false);
       return;
-
-     }
+    }
+    
 
     const city = formData.currentCity.toLowerCase();
     formData.currentCity = city;
@@ -101,7 +118,7 @@ export default function ExploreDest() {
       const response = await axios.post(reccRoute, formData);
       if (!response.data.status) {
         toast.error(response.data.msg);
-        return;
+        
       }
       if (response.data.status) {
         toast.success("Successful");
